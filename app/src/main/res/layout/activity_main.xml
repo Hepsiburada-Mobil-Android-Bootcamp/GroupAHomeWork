@@ -1,76 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgColor"
     tools:context=".screens.activity.MainActivity">
+   <androidx.fragment.app.FragmentContainerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/nav_host_fragment_container"
+       app:defaultNavHost="true"
+       android:name="androidx.navigation.fragment.NavHostFragment"
+       app:navGraph="@navigation/nav_graph"/>
+   <com.google.android.material.bottomappbar.BottomAppBar
+       android:id="@+id/bottomAppBar"
 
-    <TextView
-        android:id="@+id/title"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Let's eat Qulity food"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="291dp" />
-    <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:fabCradleMargin="20dp"
+       app:fabCradleVerticalOffset="10dp"
+       app:fabCradleRoundedCornerRadius="20dp"
+       android:layout_gravity="bottom">
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="12dp"
+      <com.google.android.material.bottomnavigation.BottomNavigationView
+          android:id="@+id/bottomNavigationView"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginEnd="16dp"
+          android:background="#00FFFFFF"
+          app:menu="@menu/bottom_nav_menu" />
 
-        >
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@color/itemBgColor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:id="@+id/image"
-                android:layout_width="150dp"
-                android:layout_height="76dp"
-                android:src="@drawable/pizza"/>
-            <TextView
-                app:layout_constraintTop_toBottomOf="@+id/image"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:id="@+id/cardTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Title"
-                android:textColor="@color/textColor"/>
-            <TextView
-                app:layout_constraintTop_toBottomOf="@+id/cardTitle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Title"
-                android:textColor="@color/textColor"/>
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="change color mode"
-                app:layout_constraintTop_toBottomOf="@+id/price"
-                android:backgroundTint="@color/buttonColor"
-                android:textColor="@color/textColor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+   </com.google.android.material.bottomappbar.BottomAppBar>
 
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+   <com.google.android.material.floatingactionbutton.FloatingActionButton
+       android:id="@+id/fab"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/ic_baseline_add_24"
+       app:layout_anchor="@id/bottomAppBar" />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
