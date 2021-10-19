@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -50,5 +51,10 @@ dependencies {
     //Lottie
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //navigation
+
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
 
 }
