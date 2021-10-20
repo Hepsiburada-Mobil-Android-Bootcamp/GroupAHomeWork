@@ -14,19 +14,22 @@
        android:layout_height="match_parent">
 
       <androidx.constraintlayout.widget.ConstraintLayout
+
           android:id="@+id/container"
           android:layout_width="match_parent"
           android:layout_height="match_parent">
 
 
          <androidx.coordinatorlayout.widget.CoordinatorLayout
+
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="@color/bgColor"
+
              tools:context=".screens.activity.MainActivity">
 
 
             <androidx.fragment.app.FragmentContainerView
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/nav_host_fragment_container"
@@ -68,6 +71,8 @@
 
 
             <ImageButton
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="28dp"
                 android:id="@+id/drawerMenuIcon"
                 android:background="@null"
                 app:layout_constraintTop_toTopOf="parent"
@@ -75,6 +80,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/hamburgermenu"/>
+            <ImageView
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="28dp"
+                android:id="@+id/profilPic"
+                android:background="@null"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_gravity="end"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/pizza"/>
          </androidx.coordinatorlayout.widget.CoordinatorLayout>
       </androidx.constraintlayout.widget.ConstraintLayout>
 
