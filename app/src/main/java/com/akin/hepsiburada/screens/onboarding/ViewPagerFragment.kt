@@ -19,6 +19,7 @@ class ViewPagerFragment : Fragment() {
 
         val fragmentList = arrayListOf<Fragment>(
 
+
         )
 
         return view
