@@ -36,6 +36,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
+
         android:id="@+id/imageViewFood"
         android:layout_width="202dp"
         android:layout_height="209dp"

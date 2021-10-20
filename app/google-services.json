@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:832286011110:android:df329c8e3727242f69d527",
+        "mobilesdk_app_id": "1:832286011110:android:b60fc3d91bf5b31869d527",
         "android_client_info": {
-          "package_name": "com.akin.hepsiburada.screens.activity"
+          "package_name": "com.akin.hepsiburada"
         }
       },
       "oauth_client": [
