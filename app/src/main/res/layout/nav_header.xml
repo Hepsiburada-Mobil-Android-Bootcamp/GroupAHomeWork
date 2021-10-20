@@ -9,7 +9,7 @@
         android:id="@+id/profilImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/test"
+        android:src="@drawable/pizza"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 

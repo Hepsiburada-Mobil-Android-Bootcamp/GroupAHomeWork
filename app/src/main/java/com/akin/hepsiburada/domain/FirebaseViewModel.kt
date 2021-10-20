@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.akin.hepsiburada.data.FoodsModel
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.ktx.firestore
@@ -16,19 +18,20 @@ import com.google.firebase.ktx.initialize
 
 
 class FirebaseViewModel() : ViewModel() {
+
+    private lateinit var auth : FirebaseAuth
+
     private val _foodList = MutableLiveData<List<FoodsModel>>()
     val foodList: LiveData<List<FoodsModel>> = _foodList
 
     private val _categoriesList = MutableLiveData<List<String>>()
     val categoriesList: LiveData<List<String>> = _categoriesList
 
-    init{
+    private val _favList = MutableLiveData<List<String>>()
+    val favList: LiveData<List<String>> = _favList
 
-        getAllFoods()
-        getCategories()
-    }
 
-    private fun getAllFoods(){
+     fun getAllFoods(){
 
        // Firebase.initialize(context)
         val db = Firebase.firestore
@@ -46,7 +49,7 @@ class FirebaseViewModel() : ViewModel() {
 
             }
     }
-    private fun getCategories(){
+     fun getCategories(){
 
         // Firebase.initialize(context)
         val db = Firebase.firestore
@@ -68,5 +71,29 @@ class FirebaseViewModel() : ViewModel() {
 
             }
     }
+
+     fun getAllFav(){
+
+        // Firebase.initialize(context)
+        val db = Firebase.firestore
+        auth = Firebase.auth
+
+        db.collection("Users").document(auth.currentUser!!.uid).collection("Favorits").get()
+            .addOnSuccessListener { result->
+                for (document in result) {
+                    val favorits:ArrayList<String> = document.get("foodId") as ArrayList<String>
+                    _favList.value = favorits
+                }
+
+
+            }
+            .addOnFailureListener { exception ->
+                println(exception)
+
+            }
+    }
+
+
+
 
 }
