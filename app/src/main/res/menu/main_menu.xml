@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/settings_fragment"
-        android:title="Settings" />
-    <item
-        android:id="@+id/profile_fragment"
+        android:icon="@drawable/person"
+        android:id="@+id/profilFragment"
         android:title="Profile" />
+    <item
+        android:icon="@drawable/orders"
+        android:id="@+id/ordersFragment"
+        android:title="My Orders" />
+    <item
+        android:icon="@drawable/luckyfood"
+        android:id="@+id/luckyFoodFragment"
+        android:title="My Lucky Food" />
+    <item
+        android:icon="@drawable/campaigns"
+        android:id="@+id/campaignsFragment"
+        android:title="Campaigns" />
+    <item
+        android:icon="@drawable/settings"
+        android:id="@+id/settingsFragment"
+        android:title="Settings" />
+
 </menu>

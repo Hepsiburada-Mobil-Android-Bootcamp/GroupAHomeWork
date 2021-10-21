@@ -14,9 +14,7 @@ class FirebaseManager {
 
         db.collection("Foods").get()
             .addOnSuccessListener { result->
-
                 alpha =   result.toObjects(FoodsModel::class.java)
-
 
             }
             .addOnFailureListener { exception ->

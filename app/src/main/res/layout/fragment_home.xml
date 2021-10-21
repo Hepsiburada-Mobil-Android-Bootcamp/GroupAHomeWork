@@ -14,9 +14,23 @@
         android:layout_height="match_parent"
         android:background="@color/bgColor"
         tools:context=".screens.fragments.HomeFragment">
+        <SearchView
+            app:iconifiedByDefault="false"
+            android:id="@+id/searchViewHome"
+            android:transitionName="transitionSearch"
+            app:layout_constraintBottom_toTopOf="@+id/title"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/categories_bg"
+            android:queryHint="search food"
+            android:textAlignment="center"
+            />
 
     <TextView
-        android:layout_marginTop="80sp"
+        android:layout_marginTop="200dp"
         android:id="@+id/title"
         android:textSize="18sp"
         android:layout_marginStart="36dp"
