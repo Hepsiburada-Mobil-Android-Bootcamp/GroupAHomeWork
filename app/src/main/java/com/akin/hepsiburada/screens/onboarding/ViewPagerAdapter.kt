@@ -13,7 +13,6 @@ class ViewPagerAdapter(
 
     private val fragmentList :ArrayList<Fragment> = list
 
-
     override fun getItemCount(): Int {
         return fragmentList.size
     }
