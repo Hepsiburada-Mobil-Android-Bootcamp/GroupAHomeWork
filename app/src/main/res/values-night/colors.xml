@@ -9,11 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="darkgrey">#151515</color>
 
-    <color name="textColor">#151515</color>
-    <color name="subTextColor">#272D2F</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="subTextColor">#D7D7D7</color>
     <color name="calorieTextColor">#FE724C</color>
     <color name="buttonColor">#FFC529</color>
-    <color name="bgColor">#D7D7D7</color>
-    <color name="itemBgColor">#FFFFFF</color>
+    <color name="bgColor">#151515</color>
+    <color name="itemBgColor">#E8151515</color>
+
 
 </resources>

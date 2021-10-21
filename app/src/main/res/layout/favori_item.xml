@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+   >
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:backgroundTint="@color/itemBgColor"
+        android:translationZ="-20dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/foodDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppinsregular"
+        android:gravity="center"
+        android:text="Spicy chicken pasta"
+        android:textColor="@color/subTextColor"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/foodTitle"
+        app:layout_constraintTop_toBottomOf="@+id/foodTitle" />
+
+    <TextView
+        android:id="@+id/foodCalory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppinsregular"
+        android:includeFontPadding="false"
+        android:text="78 Calories"
+        android:textColor="@color/calorieTextColor"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/caloryfire_icon"
+        app:layout_constraintTop_toBottomOf="@+id/foodDesc" />
+
+    <TextView
+        android:id="@+id/foodTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:gravity="center"
+        android:text="Egg Pasta"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+    <ImageView
+        android:id="@+id/foodImage"
+        android:layout_width="105dp"
+        android:layout_height="100dp"
+        android:src="@drawable/chineesefood"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+    <TextView
+        android:id="@+id/foodPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsmedium"
+        android:gravity="center"
+        android:text="9.80"
+        android:textColor="@color/subTextColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/remove_icon"
+        app:layout_constraintTop_toBottomOf="@+id/foodDesc" />
+
+    <ImageView
+        android:id="@+id/remove_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/foodTitle"
+        app:srcCompat="@drawable/ic_baseline_remove_circle_24" />
+
+    <ImageView
+        android:id="@+id/dollar_icon"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/foodPrice"
+        app:layout_constraintEnd_toStartOf="@+id/foodPrice"
+        app:layout_constraintTop_toTopOf="@+id/foodPrice"
+        app:srcCompat="@drawable/ic_dollar_icon" />
+
+    <ImageView
+        android:id="@+id/caloryfire_icon"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="22dp"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toTopOf="@+id/foodCalory"
+        app:srcCompat="@drawable/caloryfire" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

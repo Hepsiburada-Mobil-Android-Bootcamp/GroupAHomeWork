@@ -1,8 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".screens.fragments.DetailFragment">
+
+    <ImageButton
+        android:id="@+id/favIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/backArrowButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backArrowButton"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/backArrowButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/back_arrow_bg"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+
+        android:id="@+id/imageViewFood"
+        android:layout_width="202dp"
+        android:layout_height="209dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/pizza"
+        app:layout_constraintEnd_toEndOf="@+id/favIcon"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/backArrowButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/detail_btn_bg"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewFood"
+        app:layout_constraintStart_toStartOf="@+id/imageViewFood"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFood">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="-"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="+"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewIngredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:text="Ingredients"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textViewFood"
+        app:layout_constraintTop_toBottomOf="@+id/starIcon" />
+
+    <TextView
+        android:id="@+id/textViewFood"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Pizza Chicken Dimsum Dimsum Dimsum"
+
+        android:textColor="@color/textColor"
+        android:minLines="2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/backArrowButton"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+
+    <TextView
+        android:id="@+id/textViewFoodRaiting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="2.6"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/starIcon"
+        app:layout_constraintStart_toEndOf="@+id/starIcon"
+        app:layout_constraintTop_toTopOf="@+id/starIcon"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewFoodCalorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="65 Calories"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodRaiting"
+        app:layout_constraintStart_toEndOf="@+id/fireIcon"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodRaiting"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewFoodTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="20-30 min"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/clockIcon"
+        app:layout_constraintStart_toEndOf="@+id/clockIcon"
+        app:layout_constraintTop_toTopOf="@+id/clockIcon" />
+
+    <TextView
+        android:id="@+id/textViewFoodPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6.99"
+        android:textColor="@color/textColor"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/favIcon"
+        app:layout_constraintTop_toTopOf="@+id/textViewFood" />
+
+    <ImageView
+        android:id="@+id/dollarIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_dollar_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodPrice"
+        app:layout_constraintEnd_toStartOf="@+id/textViewFoodPrice"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodPrice"
+        app:layout_constraintVertical_bias="0.73" />
+
+    <ImageView
+        android:id="@+id/starIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewFood"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFood" />
+
+    <ImageView
+        android:id="@+id/fireIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="32dp"
+        android:src="@drawable/caloryfire"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodRaiting"
+        app:layout_constraintStart_toEndOf="@+id/textViewFoodRaiting"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodRaiting" />
+
+    <ImageView
+        android:id="@+id/clockIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodCalorie"
+        app:layout_constraintStart_toEndOf="@+id/textViewFoodCalorie"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodCalorie" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/buttonColor"
+        android:src="@drawable/ic_baseline_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

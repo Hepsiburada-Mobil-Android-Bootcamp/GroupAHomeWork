@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="200dp"
+    android:layout_height="350dp"
+    android:layout_margin="8dp"
+
+    android:background="@null">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="65dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/itemBgColor"
+        android:elevation="14dp"
+        android:translationZ="-20dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+
+        android:id="@+id/foodImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:elevation="12dp"
+        android:src="@drawable/chineesefood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/foodTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppinsmedium"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="Egg Pasta"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodImage" />
+
+    <TextView
+        android:id="@+id/foodDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:fontFamily="@font/poppinsregular"
+        android:gravity="center"
+        android:text="Spicy chicken pasta"
+        android:textColor="@color/subTextColor"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/foodCalory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:src="@drawable/caloryfire"
+        app:layout_constraintBottom_toBottomOf="@+id/foodCalory"
+        app:layout_constraintEnd_toStartOf="@+id/foodCalory"
+
+        app:layout_constraintTop_toTopOf="@+id/foodCalory" />
+
+    <TextView
+        android:id="@+id/foodCalory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:fontFamily="@font/poppinsregular"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="78 Calories"
+        android:textColor="@color/calorieTextColor"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/foodPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:src="@drawable/ic_dollar_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/foodPrice"
+        app:layout_constraintEnd_toStartOf="@+id/foodPrice"
+        app:layout_constraintTop_toTopOf="@+id/foodPrice" />
+
+    <TextView
+        android:includeFontPadding="false"
+        android:id="@+id/foodPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:gravity="center"
+        android:text="9.80"
+        android:textColor="@color/subTextColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

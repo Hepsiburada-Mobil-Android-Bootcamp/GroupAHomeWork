@@ -1,6 +1,7 @@
 package com.akin.hepsiburada.screens.activity
 
 import android.animation.Animator
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.Animation
@@ -30,6 +31,7 @@ class SplashActivity : AppCompatActivity() {
 
                 //Navigate to onboarding fragment
                 println("bitti")
+
 
             }
 
