@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="@+id/backArrowButton"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         tools:itemCount="4"
-        tools:listitem="@layout/favori_item" />
+        />
 
     <TextView
         android:id="@+id/textView"
