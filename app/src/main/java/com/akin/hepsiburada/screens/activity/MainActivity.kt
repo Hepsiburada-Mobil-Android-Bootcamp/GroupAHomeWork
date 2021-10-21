@@ -1,30 +1,18 @@
 package com.akin.hepsiburada.screens.activity
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
-import android.widget.Button
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.DialogFragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.*
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.databinding.ActivityMainBinding
-import com.bumptech.glide.Glide
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.akin.hepsiburada.screens.fragments.BottomSheetFragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,14 +20,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var drawer: DrawerLayout
     private lateinit var container: ConstraintLayout
-    private lateinit var myToggle: ActionBarDrawerToggle
+    private lateinit var fabButton: FloatingActionButton
+    private lateinit var appBarConfiguration: AppBarConfiguration
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
+
+       // bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        fabButton = binding.fab
+
+        fabButton.setOnClickListener {
+            val bottomFragment = BottomSheetFragment()
+            bottomFragment.setStyle(
+                DialogFragment.STYLE_NORMAL,
+                R.style.ThemeOverlay_Demo_BottomSheetDialog)
+            bottomFragment.show(supportFragmentManager,"TAG")
+
+        }
 
 
         //nav logic
@@ -47,35 +48,33 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
 
-         navController = navHostFragment.navController
+        navController = navHostFragment.navController
 
         //bottom nav logic
         val bottomNav = binding.bottomNavigationView
         bottomNav.background = null
         bottomNav.menu.getItem(2).isEnabled = false
 
+        bottomNav.setupWithNavController(navController)
+
+
         //drawer logic
         drawer = binding.drawerLayout
         container = binding.container
-
+        val drawerNav = binding.navigationView
+        drawerNav.itemIconTintList = null
         val drawerIcon = binding.drawerMenuIcon
+
         drawerIcon.setOnClickListener {
             drawer.openDrawer(GravityCompat.START)
         }
-//        myToggle = ActionBarDrawerToggle(this,drawer,R.string.open,R.string.close)
-//        drawer.addDrawerListener(myToggle)
-//        myToggle.syncState()
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        window.navigationBarColor= Color.TRANSPARENT
-//        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        NavigationUI.setupWithNavController(drawerNav, navController)
+        //fab logic
+
+
+
 
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        if (myToggle.onOptionsItemSelected(item)){
-//            return  true
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
 
 }

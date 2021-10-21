@@ -14,17 +14,19 @@ import com.akin.hepsiburada.data.FoodsModel
 import com.akin.hepsiburada.screens.components.ICategoriesOnClick
 import com.bumptech.glide.Glide
 
-class CategoriesAdapter(private val categoriesList:List<CategoriesModel>):RecyclerView.Adapter<CategoriesAdapter.PostHolder>() {
+class CategoriesAdapter(private val categoriesList: List<CategoriesModel>) :
+    RecyclerView.Adapter<CategoriesAdapter.PostHolder>() {
+    var itemClickListener: (id: String) -> Unit = {}
 
-   inner class PostHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
+    inner class PostHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameText: TextView = itemView.findViewById(R.id.categories_item_title)
         val image: ImageView = itemView.findViewById(R.id.categories_item_image)
         val linearLayout: LinearLayout = itemView.findViewById(R.id.linearLayout)
         val context = itemView.context
 
 
-
     }
+
     private var listener: ICategoriesOnClick? = null
     private var selectedItem = 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostHolder {
@@ -37,21 +39,23 @@ class CategoriesAdapter(private val categoriesList:List<CategoriesModel>):Recycl
 
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
         holder.nameText.text = categoriesList[position].name
-        Glide.with(holder.context).load( categoriesList[position].image).into(holder.image)
+        Glide.with(holder.context).load(categoriesList[position].image).into(holder.image)
 
 
-            if (position == selectedItem) {
-                holder.linearLayout.setBackgroundResource(R.drawable.categories_bg)
-                holder.linearLayout.animate().scaleX(1.1f)
-                holder.linearLayout.animate().scaleY(1.1f)
+        if (position == selectedItem) {
+            holder.linearLayout.setBackgroundResource(R.drawable.categories_bg)
+            holder.linearLayout.animate().scaleX(1.1f)
+            holder.linearLayout.animate().scaleY(1.1f)
 
 
-            } else {
-                holder.linearLayout.setBackgroundResource(R.drawable.categories_notseleceted_bg)
-                holder.linearLayout.animate().scaleX(1f)
-                holder.linearLayout.animate().scaleY(1f)
-            }
+        } else {
+            holder.linearLayout.setBackgroundResource(R.drawable.categories_notseleceted_bg)
+            holder.linearLayout.animate().scaleX(1f)
+            holder.linearLayout.animate().scaleY(1f)
+        }
         holder.linearLayout.setOnClickListener {
+            itemClickListener(categoriesList[position].name)
+            //println(categoriesList[position].name)
             selectedItem = holder.adapterPosition
             listener?.let {
                 listener?.onClick(position)
@@ -60,15 +64,12 @@ class CategoriesAdapter(private val categoriesList:List<CategoriesModel>):Recycl
         }
 
 
-
-
-
-
     }
 
     override fun getItemCount(): Int {
-        return  categoriesList.size
+        return categoriesList.size
     }
+
     fun addListener(listener: ICategoriesOnClick) {
         this.listener = listener
     }

@@ -9,6 +9,7 @@ import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import androidx.navigation.fragment.navArgs
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.databinding.FragmentDetailBinding
 import com.akin.hepsiburada.databinding.FragmentHomeBinding
@@ -33,6 +34,10 @@ class DetailFragment : Fragment() {
 
 
 
+
+
+    private  val args:DetailFragmentArgs by navArgs()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,7 +50,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        println(args.foodTitle)
     }
 
 
