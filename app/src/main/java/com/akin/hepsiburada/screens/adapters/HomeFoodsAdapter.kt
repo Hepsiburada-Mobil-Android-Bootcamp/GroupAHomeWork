@@ -19,7 +19,7 @@ import com.akin.hepsiburada.R
 import com.akin.hepsiburada.data.FoodsModel
 import com.akin.hepsiburada.screens.fragments.HomeFragmentDirections
 import com.bumptech.glide.Glide
-import com.crowdfire.cfalertdialog.CFAlertDialog
+
 
 class HomeFoodsAdapter(private val foodList: List<FoodsModel>) :
     RecyclerView.Adapter<HomeFoodsAdapter.ViewHolder>() {
@@ -56,25 +56,6 @@ class HomeFoodsAdapter(private val foodList: List<FoodsModel>) :
         holder.cardView.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(key)
             it.findNavController().navigate(action)
-
-//            val alert : CFAlertDialog.Builder = CFAlertDialog.Builder(holder.context).setDialogStyle(CFAlertDialog.CFAlertStyle.BOTTOM_SHEET).
-//                    setTitle("Alert").setMessage("Do you want to see details").addButton("Yummy!", -1, -1,
-//                CFAlertDialog.CFAlertActionStyle.POSITIVE, CFAlertDialog.CFAlertActionAlignment.END,
-//                 object :DialogInterface.OnCancelListener, DialogInterface.OnClickListener {
-//                     override fun onCancel(p0: DialogInterface?) {
-//                         TODO("Not yet implemented")
-//                     }
-//
-//                     override fun onClick(p0: DialogInterface?, p1: Int) {
-//
-//
-//                        p0?.dismiss()
-//                     }
-//                 })
-//            alert.show()
-
-
-
         }
 
 
