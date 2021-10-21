@@ -11,23 +11,38 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.navigation.fragment.navArgs
 import com.akin.hepsiburada.R
+import com.akin.hepsiburada.databinding.FragmentDetailBinding
+import com.akin.hepsiburada.databinding.FragmentHomeBinding
 import com.akin.hepsiburada.screens.activity.SplashActivity
 
 class DetailFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    private var _binding: FragmentDetailBinding? = null
+    private val binding get() = _binding!!
+    private val imageViewFood by lazy {
+        binding.imageViewFood
     }
+    private val textViewFood by lazy {
+        binding.textViewFood
+    }
+    private val textViewFoodCalorie by lazy {
+        binding.textViewFoodCalorie
+    }
+    private val textViewFoodPrice by lazy {
+        binding.textViewFoodPrice
+    }
+
+
+
+
+
     private  val args:DetailFragmentArgs by navArgs()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val image = view?.findViewById<ImageButton>(R.id.favIcon)
-
-
         return inflater.inflate(R.layout.fragment_detail, container, false)
 
     }
