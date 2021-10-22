@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -27,11 +28,10 @@ class HomeFoodsAdapter(private val foodList: List<FoodsModel>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val foodImage: ImageView = itemView.findViewById(R.id.foodImage)
         val foodTitle: TextView = itemView.findViewById(R.id.foodTitle)
-        val foodDesc: TextView = itemView.findViewById(R.id.foodDesc)
         val foodPrice: TextView = itemView.findViewById(R.id.foodPrice)
-        val foodCalorie: TextView = itemView.findViewById(R.id.foodCalory)
         val constraintLayout :ConstraintLayout = itemView.findViewById(R.id.constraintLy)
         val cardView :CardView = itemView.findViewById(R.id.cardView)
+        val favIcon :ImageView = itemView.findViewById(R.id.favIcon)
         val context = itemView.context
 
     }
@@ -45,35 +45,17 @@ class HomeFoodsAdapter(private val foodList: List<FoodsModel>) :
 
     override fun onBindViewHolder(holder: HomeFoodsAdapter.ViewHolder, position: Int) {
         holder.foodTitle.text = foodList[position].name
-        holder.foodDesc.text = foodList[position].ingredients[0]
         holder.foodPrice.text = foodList[position].price.toString()
-        holder.foodCalorie.text = foodList[position].calory
         val key = foodList[position].id
         //Glide tek sefer olusturulacak
         Glide.with(holder.context).load(foodList[position].image).circleCrop()
             .into(holder.foodImage)
-
+        holder.favIcon.setOnClickListener {
+            println("asdas")
+        }
         holder.cardView.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(key)
             it.findNavController().navigate(action)
-
-//            val alert : CFAlertDialog.Builder = CFAlertDialog.Builder(holder.context).setDialogStyle(CFAlertDialog.CFAlertStyle.BOTTOM_SHEET).
-//                    setTitle("Alert").setMessage("Do you want to see details").addButton("Yummy!", -1, -1,
-//                CFAlertDialog.CFAlertActionStyle.POSITIVE, CFAlertDialog.CFAlertActionAlignment.END,
-//                 object :DialogInterface.OnCancelListener, DialogInterface.OnClickListener {
-//                     override fun onCancel(p0: DialogInterface?) {
-//                         TODO("Not yet implemented")
-//                     }
-//
-//                     override fun onClick(p0: DialogInterface?, p1: Int) {
-//
-//
-//                        p0?.dismiss()
-//                     }
-//                 })
-//            alert.show()
-
-
 
         }
 

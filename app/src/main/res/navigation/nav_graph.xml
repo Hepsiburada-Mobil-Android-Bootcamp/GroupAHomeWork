@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_homeFragment_to_ordersFragment"
             app:destination="@id/ordersFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bottomSheetFragment"
+            app:destination="@id/bottomSheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -110,5 +113,13 @@
         android:name="com.akin.hepsiburada.screens.fragments.CampaignsFragment"
         android:label="fragment_campaigns"
         tools:layout="@layout/fragment_campaigns" />
+    <dialog
+        android:id="@+id/bottomSheetFragment"
+        android:name="com.akin.hepsiburada.screens.fragments.BottomSheetFragment"
+        android:label="BottomSheetFragment" >
+        <action
+            android:id="@+id/action_bottomSheetFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </dialog>
 
 </navigation>

@@ -22,8 +22,7 @@ import com.akin.hepsiburada.domain.HomeViewModel
 import com.akin.hepsiburada.domain.SearchViewModel
 import com.akin.hepsiburada.screens.adapters.HomeFoodsAdapter
 import com.akin.hepsiburada.screens.adapters.SearchFoodsAdapter
-import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.FirebaseDatabase
+
 
 
 class SearchFragment : Fragment() {
@@ -50,8 +49,8 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
 
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         rcSearch = binding.rcSearch
         rcSearch?.layoutManager = GridLayoutManager(context,2)
         searchView = binding.searchViewSearch

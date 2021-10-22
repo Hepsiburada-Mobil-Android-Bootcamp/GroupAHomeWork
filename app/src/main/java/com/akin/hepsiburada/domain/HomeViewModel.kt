@@ -11,7 +11,6 @@ import com.google.firebase.ktx.Firebase
 class HomeViewModel : ViewModel() {
     private val _foodList = MutableLiveData<List<FoodsModel>>()
     val foodList: LiveData<List<FoodsModel>> = _foodList
-
     private val _categoriesList = MutableLiveData<List<CategoriesModel>>()
     val categoriesList: LiveData<List<CategoriesModel>> = _categoriesList
 
@@ -50,6 +49,7 @@ class HomeViewModel : ViewModel() {
 
         db.collection("Foods").whereEqualTo("category",alpha).get()
             .addOnSuccessListener { result ->
+
 
                 _foodList.value = result.toObjects(FoodsModel::class.java)
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -27,10 +28,11 @@ class SearchFoodsAdapter(private val foodList: List<FoodsModel>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val foodImage: ImageView = itemView.findViewById(R.id.foodImage)
         val foodTitle: TextView = itemView.findViewById(R.id.foodTitle)
-        val foodDesc: TextView = itemView.findViewById(R.id.foodDesc)
+       // val foodDesc: TextView = itemView.findViewById(R.id.foodDesc)
         val foodPrice: TextView = itemView.findViewById(R.id.foodPrice)
-        val foodCalorie: TextView = itemView.findViewById(R.id.foodCalory)
+      //  val foodCalorie: TextView = itemView.findViewById(R.id.foodCalory)
         val constraintLayout :ConstraintLayout = itemView.findViewById(R.id.constraintLy)
+        val cardView : CardView = itemView.findViewById(R.id.cardView)
         val context = itemView.context
 
     }
@@ -44,31 +46,17 @@ class SearchFoodsAdapter(private val foodList: List<FoodsModel>) :
 
     override fun onBindViewHolder(holder: SearchFoodsAdapter.ViewHolder, position: Int) {
         holder.foodTitle.text = foodList[position].name
-        holder.foodDesc.text = foodList[position].ingredients[0]
+     //   holder.foodDesc.text = foodList[position].ingredients[0]
         holder.foodPrice.text = foodList[position].price.toString()
-        holder.foodCalorie.text = foodList[position].calory
+     //   holder.foodCalorie.text = foodList[position].calory
         //Glide tek sefer olusturulacak
+        val key = foodList[position].id
         Glide.with(holder.context).load(foodList[position].image).circleCrop()
             .into(holder.foodImage)
 
-        holder.constraintLayout.setOnClickListener {
-            val alert : CFAlertDialog.Builder = CFAlertDialog.Builder(holder.context).setDialogStyle(CFAlertDialog.CFAlertStyle.BOTTOM_SHEET).
-                    setTitle("Alert").setMessage("Do you want to see details").addButton("Yummy!", -1, -1,
-                CFAlertDialog.CFAlertActionStyle.POSITIVE, CFAlertDialog.CFAlertActionAlignment.END,
-                 object :DialogInterface.OnCancelListener, DialogInterface.OnClickListener {
-                     override fun onCancel(p0: DialogInterface?) {
-                         TODO("Not yet implemented")
-                     }
-
-                     override fun onClick(p0: DialogInterface?, p1: Int) {
-
-                        val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(holder.foodTitle.text.toString())
-                         it.findNavController().navigate(action)
-                        p0?.dismiss()
-                     }
-                 })
-            alert.show()
-
+        holder.cardView.setOnClickListener {
+            val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(key)
+            it.findNavController().navigate(action)
 
 
         }

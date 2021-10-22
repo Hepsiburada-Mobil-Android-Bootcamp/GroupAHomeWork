@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.navigation.fragment.navArgs
 import com.akin.hepsiburada.R
+import com.akin.hepsiburada.screens.activity.MainActivity
 import com.akin.hepsiburada.screens.activity.SplashActivity
 
 class DetailFragment : Fragment() {
@@ -26,8 +27,9 @@ class DetailFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val image = view?.findViewById<ImageButton>(R.id.favIcon)
-
-
+        val x = activity as MainActivity
+        x.findViewById<ImageView>(R.id.drawerMenuIcon).visibility = View.GONE
+        x.findViewById<ImageView>(R.id.profilPic).visibility = View.GONE
         return inflater.inflate(R.layout.fragment_detail, container, false)
 
     }

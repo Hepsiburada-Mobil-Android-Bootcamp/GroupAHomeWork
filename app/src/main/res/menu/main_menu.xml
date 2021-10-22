@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:icon="@drawable/person"
         android:id="@+id/profilFragment"
@@ -20,5 +21,15 @@
         android:icon="@drawable/settings"
         android:id="@+id/settingsFragment"
         android:title="Settings" />
+    <item
+        android:id="@+id/changeTheme"
+        android:icon="@drawable/settings"
+        android:title="change theme"
+        app:actionLayout="@layout/switch_layout"
+        />
+    <item
+        android:icon="@drawable/settings"
+        android:id="@+id/exit"
+        android:title="Exit" />
 
 </menu>

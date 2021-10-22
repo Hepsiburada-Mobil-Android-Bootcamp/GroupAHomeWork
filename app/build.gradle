@@ -57,7 +57,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx:23.0.4'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
     implementation 'com.google.firebase:firebase-database-ktx:20.0.2'
-    implementation 'com.firebaseui:firebase-ui-database:6.2.1'
+
 
     //Lottie
     def lottieVersion = "3.4.0"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:padding="16dp"
         android:id="@+id/bottomSheet">
 
         <TextView
@@ -34,9 +36,12 @@
             android:layout_marginTop="16dp" />
 
         <TextView
+            android:textAlignment="viewStart"
+            android:layout_width="100dp"
+            android:includeFontPadding="false"
             android:layout_marginTop="16dp"
             android:id="@+id/addNameText"
-            android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
             android:text="Food Name"
             android:fontFamily="@font/poppinsmedium"
@@ -48,23 +53,25 @@
             android:id="@+id/foodImage"
             android:layout_width="20sp"
             android:layout_height="20sp"
-
             android:src="@drawable/food"
-            app:layout_constraintBottom_toTopOf="@+id/nameEditText"
-            android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toEndOf="@id/addNameText" />
+            app:layout_constraintBottom_toBottomOf="@+id/addNameText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/addNameText" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addNameText" />
 
         <TextView
+            android:includeFontPadding="false"
             android:layout_marginTop="16dp"
             android:id="@+id/addPriceText"
-            android:layout_width="wrap_content"
+            android:textAlignment="viewStart"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Food Price"
             android:fontFamily="@font/poppinsmedium"
@@ -77,21 +84,24 @@
             android:layout_width="20sp"
             android:layout_height="20sp"
             android:src="@drawable/money"
-            app:layout_constraintBottom_toTopOf="@+id/priceEditText"
-            android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toEndOf="@id/addPriceText" />
+            app:layout_constraintBottom_toBottomOf="@+id/addPriceText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/addPriceText" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/priceEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addPriceText" />
 
         <TextView
+            android:includeFontPadding="false"
             android:layout_marginTop="16dp"
             android:id="@+id/addCategoriesText"
-            android:layout_width="wrap_content"
+            android:textAlignment="viewStart"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Categories"
             android:fontFamily="@font/poppinsmedium"
@@ -104,21 +114,23 @@
             android:layout_width="20sp"
             android:layout_height="20sp"
             android:src="@drawable/categories"
-            app:layout_constraintBottom_toTopOf="@+id/categoriesEditText"
-            android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toEndOf="@id/addCategoriesText" />
+            app:layout_constraintBottom_toBottomOf="@+id/addCategoriesText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/addCategoriesText" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/categoriesEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addCategoriesText" />
 
         <TextView
             android:layout_marginTop="16dp"
             android:id="@+id/addIngredientsText"
-            android:layout_width="wrap_content"
+            android:textAlignment="viewStart"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Ingredients"
             android:fontFamily="@font/poppinsmedium"
@@ -131,21 +143,24 @@
             android:layout_width="20sp"
             android:layout_height="20sp"
             android:src="@drawable/recipe"
-            app:layout_constraintBottom_toTopOf="@+id/ingredientsEditText"
-            android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toEndOf="@id/addIngredientsText" />
+            app:layout_constraintBottom_toBottomOf="@+id/addIngredientsText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/addIngredientsText" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ingredientsEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addIngredientsText" />
 
         <TextView
+            android:includeFontPadding="false"
             android:layout_marginTop="16dp"
             android:id="@+id/addCalorieText"
-            android:layout_width="wrap_content"
+            android:textAlignment="viewStart"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Calorie"
             android:fontFamily="@font/poppinsmedium"
@@ -157,16 +172,18 @@
             android:id="@+id/caloriesImage"
             android:layout_width="20sp"
             android:layout_height="20sp"
-            android:layout_marginStart="28dp"
-            android:layout_marginBottom="8dp"
+
             android:src="@drawable/recipe"
-            app:layout_constraintBottom_toTopOf="@+id/caloriesEditText"
-            app:layout_constraintStart_toEndOf="@id/addCalorieText" />
+            app:layout_constraintBottom_toBottomOf="@+id/addCalorieText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/addCalorieText" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/caloriesEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addCalorieText" />
 
         <Button

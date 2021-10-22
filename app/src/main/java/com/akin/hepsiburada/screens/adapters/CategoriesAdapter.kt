@@ -54,13 +54,16 @@ class CategoriesAdapter(private val categoriesList: List<CategoriesModel>) :
             holder.linearLayout.animate().scaleY(1f)
         }
         holder.linearLayout.setOnClickListener {
-            itemClickListener(categoriesList[position].name)
-            //println(categoriesList[position].name)
-            selectedItem = holder.adapterPosition
-            listener?.let {
-                listener?.onClick(position)
-            }
-            notifyDataSetChanged()
+
+                itemClickListener(categoriesList[position].name)
+                //println(categoriesList[position].name)
+                selectedItem = holder.adapterPosition
+                listener?.let {
+                    listener?.onClick(position)
+                }
+                notifyDataSetChanged()
+
+
         }
 
 
