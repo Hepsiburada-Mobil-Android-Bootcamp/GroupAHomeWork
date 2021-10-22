@@ -19,6 +19,7 @@ import com.akin.hepsiburada.databinding.FragmentHomeBinding
 import com.akin.hepsiburada.domain.DetailViewModel
 import com.akin.hepsiburada.domain.DetailViewModelFactory
 import com.akin.hepsiburada.domain.HomeViewModel
+import com.akin.hepsiburada.screens.activity.MainActivity
 import com.akin.hepsiburada.screens.activity.SplashActivity
 import com.bumptech.glide.Glide
 
@@ -36,6 +37,12 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val image = view?.findViewById<ImageButton>(R.id.favIcon)
+        val x = activity as MainActivity
+        x.findViewById<ImageView>(R.id.drawerMenuIcon).visibility = View.GONE
+        x.findViewById<ImageView>(R.id.profilPic).visibility = View.GONE
+        return inflater.inflate(R.layout.fragment_detail, container, false)
+
         // Inflate the layout for this fragment
         _binding = FragmentDetailBinding.inflate(inflater,container,false)
         return binding.root

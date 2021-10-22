@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +22,7 @@ import com.akin.hepsiburada.data.FoodsModel
 import com.akin.hepsiburada.databinding.FragmentHomeBinding
 import com.akin.hepsiburada.domain.FavoritsViewModel
 import com.akin.hepsiburada.domain.HomeViewModel
+import com.akin.hepsiburada.screens.activity.MainActivity
 import com.akin.hepsiburada.screens.adapters.CategoriesAdapter
 import com.akin.hepsiburada.screens.adapters.HomeFoodsAdapter
 
@@ -59,6 +61,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val x = activity as MainActivity
+        x.findViewById<ImageView>(R.id.drawerMenuIcon).visibility = View.VISIBLE
+        x.findViewById<ImageView>(R.id.profilPic).visibility = View.VISIBLE
 
         searchView?.setOnClickListener {
             val extras = FragmentNavigatorExtras(binding.searchViewHome to "transitionSearch")

@@ -21,7 +21,8 @@
         app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
     </androidx.cardview.widget.CardView>
 
@@ -36,14 +37,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/favIcon"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/darkgrey"
         android:elevation="12dp"
         android:src="@drawable/ic_baseline_favorite_24"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -63,44 +66,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodImage" />
 
-    <TextView
-        android:id="@+id/foodDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:fontFamily="@font/poppinsregular"
-        android:gravity="center"
-        android:text="Spicy chicken pasta"
-        android:textColor="@color/subTextColor"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/foodCalory"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-
-        android:layout_width="20sp"
-        android:layout_height="20sp"
-        android:src="@drawable/caloryfire"
-        app:layout_constraintBottom_toBottomOf="@+id/foodCalory"
-        app:layout_constraintEnd_toStartOf="@+id/foodCalory"
-
-        app:layout_constraintTop_toTopOf="@+id/foodCalory" />
-
-    <TextView
-        android:id="@+id/foodCalory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:fontFamily="@font/poppinsregular"
-        android:gravity="center"
-        android:includeFontPadding="false"
-        android:text="78 Calories"
-        android:textColor="@color/calorieTextColor"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/foodPrice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
 

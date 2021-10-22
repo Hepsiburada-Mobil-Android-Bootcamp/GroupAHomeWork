@@ -13,7 +13,7 @@
     <color name="subTextColor">#272D2F</color>
     <color name="calorieTextColor">#FE724C</color>
     <color name="buttonColor">#FFC529</color>
-    <color name="bgColor">#D7D7D7</color>
+    <color name="bgColor">#F5F5F5</color>
     <color name="itemBgColor">#FFFFFF</color>
 
 </resources>

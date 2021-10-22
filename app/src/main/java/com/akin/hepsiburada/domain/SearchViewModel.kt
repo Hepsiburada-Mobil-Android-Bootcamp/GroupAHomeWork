@@ -42,6 +42,7 @@ class SearchViewModel:ViewModel() {
         db.collection("Foods").get()
             .addOnSuccessListener { result ->
 
+
                 _foodList.value = result.toObjects(FoodsModel::class.java)
 
 
