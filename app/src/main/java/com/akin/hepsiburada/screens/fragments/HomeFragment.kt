@@ -37,6 +37,9 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
+    private val favViewModel: FavoritsViewModel by viewModels{
+        FavoritsViewModelFactory("3JZBBgTFlWD6U6SDBj8A")
+    }
     private var rcCategory: RecyclerView? = null
     private var rcHomeFoods: RecyclerView? = null
     private var searchView: SearchView? = null
@@ -85,9 +88,16 @@ class HomeFragment : Fragment() {
         viewModel.foodList.observeForever {
             val adapter = HomeFoodsAdapter(it, this)
             rcHomeFoods?.adapter = adapter
-            println(it)
+
+            adapter.itemClickListener={ data->
+                favViewModel.addFoodsToFav(data)
+            }
 
         }
+
+        favViewModel.favList.observe(viewLifecycleOwner,{
+            println(it)
+        })
 
         viewModel.isComplete.observe(viewLifecycleOwner,{
             if (it){

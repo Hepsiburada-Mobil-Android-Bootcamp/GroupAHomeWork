@@ -8,7 +8,6 @@ fun ImageView.load(imgUrl: String) {
     Glide.with(context)
         .load(imgUrl)
         .circleCrop()
-        .placeholder(R.drawable.loading)
         .into(this)
 
 }
