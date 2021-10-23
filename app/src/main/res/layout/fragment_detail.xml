@@ -94,14 +94,14 @@
             android:id="@+id/textViewIngredients"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Ingredients"
             android:textColor="@color/textColor"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:fontFamily="@font/poppinsmedium"
             app:layout_constraintStart_toStartOf="@+id/textViewFood"
-            app:layout_constraintTop_toBottomOf="@+id/textViewFoodCalorie"
-            android:text="Ingredients" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodCalorie" />
 
         <TextView
             android:id="@+id/textViewFood"
@@ -151,28 +151,16 @@
             android:id="@+id/textViewFoodCalorie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            tools:text="65 Calories"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/poppinsmedium"
+            android:includeFontPadding="false"
             android:textColor="@color/textColor"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
-
-        <TextView
-            android:id="@+id/textViewFoodTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="20-30 min"
-            android:fontFamily="@font/poppinsmedium"
-            android:textColor="@color/textColor"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodCalorie"
-            app:layout_constraintStart_toEndOf="@+id/textViewFoodCalorie"
-            app:layout_constraintTop_toTopOf="@+id/textViewFoodCalorie" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCategory"
+            tools:text="65 Calories" />
 
         <TextView
             android:id="@+id/textViewFoodPrice"
@@ -197,22 +185,6 @@
             app:layout_constraintTop_toTopOf="@+id/textViewFoodPrice"
             app:layout_constraintVertical_bias="0.73" />
 
-        <ImageView
-            android:id="@+id/starIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            app:layout_constraintStart_toStartOf="@+id/textViewFood"
-            app:layout_constraintTop_toBottomOf="@+id/textViewFood" />
-
-        <ImageView
-            android:id="@+id/clockIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodCalorie"
-            app:layout_constraintStart_toEndOf="@+id/textViewFoodCalorie"
-            app:layout_constraintTop_toTopOf="@+id/textViewFoodCalorie" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/detailFab"
@@ -225,6 +197,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageView
+            android:id="@+id/iconCaloryFire"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodCalorie"
+            app:layout_constraintEnd_toStartOf="@+id/textViewFoodCalorie"
+            app:layout_constraintTop_toTopOf="@+id/textViewFoodCalorie"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/caloryfire" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

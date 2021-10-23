@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.databinding.FragmentUpdateBottomSheetBinding
 import com.akin.hepsiburada.databinding.PersistentBottomSheetBinding
-import com.akin.hepsiburada.domain.BottomSheetFragmentFactory
+import com.akin.hepsiburada.domain.factory.BottomSheetFragmentFactory
 import com.akin.hepsiburada.domain.BottomSheetViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
