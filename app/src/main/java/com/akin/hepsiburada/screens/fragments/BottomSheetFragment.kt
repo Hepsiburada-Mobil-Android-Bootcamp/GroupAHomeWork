@@ -19,6 +19,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -31,6 +32,7 @@ import com.bumptech.glide.Glide
 import com.crowdfire.cfalertdialog.CFAlertDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.storage.FirebaseStorage
+import java.lang.Exception
 import java.net.URI
 import java.text.SimpleDateFormat
 import java.util.*
@@ -97,8 +99,7 @@ class BottomSheetFragment() : BottomSheetDialogFragment() {
         }
 
         addButton?.setOnClickListener {
-            addButton!!.isEnabled = false
-            addButton!!.text = "Loading...."
+
             checkItem()
             viewModel.isClickable.observe(viewLifecycleOwner,{
                 if (it){
@@ -114,7 +115,6 @@ class BottomSheetFragment() : BottomSheetDialogFragment() {
         }
         addImage?.setOnClickListener {
             addImage()
-            println("ss")
         }
 
 
@@ -137,21 +137,11 @@ class BottomSheetFragment() : BottomSheetDialogFragment() {
             calorieText?.text.isNullOrEmpty() -> {
                 calorieText?.error = "Please write a calorie"
             }
+
             else -> {
 
-                val randomId = (1..100000).random()
-                println(randomId)
-                val list = (ingredientsText?.text?.split(","))
-
-//                viewModel.addNewFood(
-//                    nameText?.text.toString(),
-//                    priceText?.text.toString().toDouble(),
-//                    "https://i.pinimg.com/564x/df/80/d1/df80d1b9f2db2b5d915835b8eb9c8c5c.jpg",
-//                    categoriesText?.text.toString(),
-//                    list as ArrayList<String>,
-//                    calorieText?.text.toString(),
-//                    "5555"
-//                )
+                addButton!!.isEnabled = false
+                addButton!!.text = "Loading...."
                 uploadImage()
 
             }
@@ -183,15 +173,23 @@ class BottomSheetFragment() : BottomSheetDialogFragment() {
         println(randomId)
         val list = (ingredientsText?.text?.split(","))
         val uuid = UUID.randomUUID()
-        viewModel.addAndGetImageFromFirebase(
-            imageUri,
-            nameText?.text.toString(),
-            priceText?.text.toString().toDouble(),
-            categoriesText?.text.toString(),
-            list as ArrayList<String>,
-            calorieText?.text.toString(),
-            uuid.toString()
-        )
+        try {
+            viewModel.addAndGetImageFromFirebase(
+                imageUri,
+                nameText?.text.toString(),
+                priceText?.text.toString().toDouble(),
+                categoriesText?.text.toString(),
+                list as ArrayList<String>,
+                calorieText?.text.toString(),
+                uuid.toString()
+            )
+        }catch (ex:Exception){
+            addButton!!.isEnabled = true
+            addButton!!.text = "Add Food"
+            Toast.makeText(context,"Please choose a image",Toast.LENGTH_LONG).show()
+        }
+
+
 
 
     }

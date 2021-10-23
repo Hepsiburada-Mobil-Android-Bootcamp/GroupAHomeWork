@@ -87,7 +87,7 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
           storageRef.downloadUrl
 
         }.addOnFailureListener {
-
+            isClickable.value = true
             println(it.toString())
         }.addOnCompleteListener { task ->
             if (task.isSuccessful){

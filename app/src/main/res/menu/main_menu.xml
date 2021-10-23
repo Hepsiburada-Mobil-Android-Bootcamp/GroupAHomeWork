@@ -2,34 +2,40 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/profileFragment"
         android:icon="@drawable/person"
-        android:id="@+id/profilFragment"
         android:title="Profile" />
     <item
-        android:icon="@drawable/orders"
         android:id="@+id/ordersFragment"
+        android:icon="@drawable/orders"
         android:title="My Orders" />
     <item
-        android:icon="@drawable/luckyfood"
         android:id="@+id/luckyFoodFragment"
+        android:icon="@drawable/luckyfood"
         android:title="My Lucky Food" />
     <item
-        android:icon="@drawable/campaigns"
         android:id="@+id/campaignsFragment"
+        android:icon="@drawable/campaigns"
         android:title="Campaigns" />
     <item
-        android:icon="@drawable/settings"
         android:id="@+id/settingsFragment"
+        android:icon="@drawable/settings"
         android:title="Settings" />
     <item
-        android:id="@+id/changeTheme"
-        android:icon="@drawable/settings"
-        android:title="change theme"
-        app:actionLayout="@layout/switch_layout"
-        />
-    <item
-        android:icon="@drawable/settings"
-        android:id="@+id/exit"
-        android:title="Exit" />
+        android:title="Others">
+        <menu>
+            <item
+                android:id="@+id/changeTheme"
+                android:icon="@drawable/ic_pantone_color_palette_svgrepo_com"
+                android:title="Change Theme"
+                app:actionLayout="@layout/switch_layout" />
+            <item
+                android:id="@+id/exit"
+                android:icon="@drawable/ic_exit_svgrepo_com"
+                android:title="Exit" />
+
+        </menu>
+    </item>
+
 
 </menu>

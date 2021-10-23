@@ -15,6 +15,8 @@ class HomeViewModel : ViewModel() {
     private val _categoriesList = MutableLiveData<List<CategoriesModel>>()
     val categoriesList: LiveData<List<CategoriesModel>> = _categoriesList
 
+    val isComplete = MutableLiveData (false)
+
     init {
 
         getAllFoods()
@@ -38,6 +40,8 @@ class HomeViewModel : ViewModel() {
             .addOnFailureListener { exception ->
                 println(exception)
 
+            }.addOnCompleteListener {
+                isComplete.value = true
             }
 
 

@@ -9,6 +9,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -36,14 +37,11 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
-    private val viewModelFav: FavoritsViewModel by viewModels{
-        FavoritsViewModelFactory("3JZBBgTFlWD6U6SDBj8A")
-    }
     private var rcCategory: RecyclerView? = null
     private var rcHomeFoods: RecyclerView? = null
     private var searchView: SearchView? = null
     private var lottieAnimationView: LottieAnimationView? = null
-
+    private var progress_bar: ProgressBar? = null
 
 
     override fun onCreateView(
@@ -58,10 +56,9 @@ class HomeFragment : Fragment() {
             rcHomeFoods = foodsRc
             searchView = searchViewHome
             lottieAnimationView = likeAnim
+            progress_bar = progressBar
         }
-//        rcCategory = binding.categoriesRc
-//        rcHomeFoods = binding.foodsRc
-//        searchView = binding.searchViewHome
+        progress_bar?.visibility = VISIBLE
         return binding.root
 
     }
@@ -86,29 +83,29 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.foodList.observeForever {
-            val adapter = HomeFoodsAdapter(it,this)
+            val adapter = HomeFoodsAdapter(it, this)
             rcHomeFoods?.adapter = adapter
             println(it)
 
-
         }
+
+        viewModel.isComplete.observe(viewLifecycleOwner,{
+            if (it){
+
+                progress_bar?.visibility = GONE
+
+            }
+        })
 
         viewModel.categoriesList.observe(viewLifecycleOwner, { categories ->
             val adapter = CategoriesAdapter(categories)
             rcCategory?.adapter = adapter
-            adapter.itemClickListener= {
+            adapter.itemClickListener = {
                 viewModel.getSpesificFoods(it)
 
             }
 
         })
-
-//        viewModelFav.currentFavList.observe(viewLifecycleOwner,{
-//
-//            println(it)
-//
-//        })
-
 
     }
 
@@ -116,7 +113,8 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-    fun playLikeAnim(){
+
+    fun playLikeAnim() {
         lottieAnimationView?.playAnimation()
         lottieAnimationView?.visibility = VISIBLE
 
