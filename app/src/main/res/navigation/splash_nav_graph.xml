@@ -3,46 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/splash_nav_graph"
-    app:startDestination="@id/viewPagerFragment">
-
+    app:startDestination="@id/splashFragment">
     <fragment
-        android:id="@+id/firstScreenFragment"
-        android:name="com.akin.hepsiburada.screens.onboarding.FirstScreenFragment"
-        android:label="fragment_first_screen"
-        tools:layout="@layout/fragment_first_screen" >
+        android:id="@+id/splashFragment"
+        android:name="com.akin.hepsiburada.screens.fragments.SplashFragment"
+        android:label="SplashFragment" >
         <action
-            android:id="@+id/action_firstScreenFragment_to_secondScreenFragment"
-            app:destination="@id/secondScreenFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/secondScreenFragment"
-        android:name="com.akin.hepsiburada.screens.onboarding.SecondScreenFragment"
-        android:label="fragment_second_screen"
-        tools:layout="@layout/fragment_second_screen" >
-        <action
-            android:id="@+id/action_secondScreenFragment_to_thirdScreenFragment"
-            app:destination="@id/thirdScreenFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/thirdScreenFragment"
-        android:name="com.akin.hepsiburada.screens.onboarding.ThirdScreenFragment"
-        android:label="fragment_third_screen"
-        tools:layout="@layout/fragment_third_screen" >
-        <action
-            android:id="@+id/action_thirdScreenFragment_to_homeFragment3"
-            app:destination="@id/homeFragment3" />
+            android:id="@+id/action_splashFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
         android:name="com.akin.hepsiburada.screens.onboarding.ViewPagerFragment"
         android:label="fragment_view_pager"
-        tools:layout="@layout/fragment_view_pager" >
-        <action
-            android:id="@+id/action_viewPagerFragment_to_firstScreenFragment"
-            app:destination="@id/firstScreenFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/homeFragment3"
-        android:name="com.akin.hepsiburada.screens.fragments.HomeFragment"
-        android:label="HomeFragment" />
+        tools:layout="@layout/fragment_view_pager" />
 </navigation>

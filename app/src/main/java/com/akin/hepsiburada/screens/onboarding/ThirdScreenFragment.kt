@@ -1,6 +1,8 @@
 package com.akin.hepsiburada.screens.onboarding
 
 import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,14 +11,13 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.akin.hepsiburada.R
-import kotlinx.android.synthetic.main.fragment_first_screen.view.*
-import kotlinx.android.synthetic.main.fragment_third_screen.view.*
+
 import androidx.navigation.fragment.findNavController
 import com.akin.hepsiburada.databinding.FragmentFirstScreenBinding
 import com.akin.hepsiburada.databinding.FragmentSecondScreenBinding
 import com.akin.hepsiburada.databinding.FragmentThirdScreenBinding
-import kotlinx.android.synthetic.main.fragment_first_screen.*
-import kotlinx.android.synthetic.main.fragment_view_pager.*
+import com.akin.hepsiburada.screens.activity.MainActivity
+
 
 class ThirdScreenFragment : Fragment() {
 
@@ -26,19 +27,31 @@ class ThirdScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 
         _binding = FragmentThirdScreenBinding.inflate(inflater, container, false)
 
         binding.apply {
-            finish.next.setOnClickListener {
-                val action = ThirdScreenFragmentDirections.actionThirdScreenFragmentToHomeFragment3()
-                it.findNavController().navigate(action)
+            finish.setOnClickListener {
+
+                val prefs2: SharedPreferences =
+                    requireActivity().getSharedPreferences("prefs4", Context.MODE_PRIVATE)
+                val editor = prefs2.edit()
+                editor.putBoolean("firstStartAnasayfa", false)
+                editor.apply()
+                startActivity(Intent(requireContext(),MainActivity::class.java))
+
             }
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 
 }

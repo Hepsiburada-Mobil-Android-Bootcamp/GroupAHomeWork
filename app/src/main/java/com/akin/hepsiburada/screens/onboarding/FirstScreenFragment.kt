@@ -10,8 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.akin.hepsiburada.databinding.FragmentFirstScreenBinding
-import kotlinx.android.synthetic.main.fragment_first_screen.view.*
-import kotlinx.android.synthetic.main.fragment_view_pager.*
+
 
 class FirstScreenFragment : Fragment() {
 
@@ -22,16 +21,18 @@ class FirstScreenFragment : Fragment() {
 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 
         _binding = FragmentFirstScreenBinding.inflate(inflater, container, false)
-
+        val viewPager  = activity?.findViewById<ViewPager2>(R.id.viewPager)
         binding.apply {
-            next.next.setOnClickListener {
+
+            next.setOnClickListener {
                 viewPager?.currentItem = 1
             }
         }
+
 
         return binding.root
     }
