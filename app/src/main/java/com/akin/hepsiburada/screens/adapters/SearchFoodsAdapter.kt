@@ -19,6 +19,7 @@ import com.akin.hepsiburada.R
 import com.akin.hepsiburada.data.FoodsModel
 import com.akin.hepsiburada.screens.fragments.HomeFragmentDirections
 import com.akin.hepsiburada.screens.fragments.SearchFragmentDirections
+import com.akin.hepsiburada.util.load
 import com.bumptech.glide.Glide
 import com.crowdfire.cfalertdialog.CFAlertDialog
 
@@ -28,16 +29,18 @@ class SearchFoodsAdapter(private val foodList: List<FoodsModel>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val foodImage: ImageView = itemView.findViewById(R.id.foodImage)
         val foodTitle: TextView = itemView.findViewById(R.id.foodTitle)
-       // val foodDesc: TextView = itemView.findViewById(R.id.foodDesc)
+
         val foodPrice: TextView = itemView.findViewById(R.id.foodPrice)
-      //  val foodCalorie: TextView = itemView.findViewById(R.id.foodCalory)
-        val constraintLayout :ConstraintLayout = itemView.findViewById(R.id.constraintLy)
-        val cardView : CardView = itemView.findViewById(R.id.cardView)
+        val constraintLayout: ConstraintLayout = itemView.findViewById(R.id.constraintLy)
+        val cardView: CardView = itemView.findViewById(R.id.cardView)
         val context = itemView.context
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchFoodsAdapter.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): SearchFoodsAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.home_item, parent, false)
 
@@ -46,18 +49,12 @@ class SearchFoodsAdapter(private val foodList: List<FoodsModel>) :
 
     override fun onBindViewHolder(holder: SearchFoodsAdapter.ViewHolder, position: Int) {
         holder.foodTitle.text = foodList[position].name
-     //   holder.foodDesc.text = foodList[position].ingredients[0]
         holder.foodPrice.text = foodList[position].price.toString()
-     //   holder.foodCalorie.text = foodList[position].calory
-        //Glide tek sefer olusturulacak
         val key = foodList[position].id
-        Glide.with(holder.context).load(foodList[position].image).circleCrop()
-            .into(holder.foodImage)
-
+        holder.foodImage.load(foodList[position].image)
         holder.cardView.setOnClickListener {
             val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(key)
             it.findNavController().navigate(action)
-
 
         }
 

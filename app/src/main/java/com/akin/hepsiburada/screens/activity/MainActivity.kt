@@ -85,12 +85,18 @@ class MainActivity : AppCompatActivity() {
         //switch and light dark mode
         val drawer_switch =
             menuItem.actionView.findViewById(R.id.drawer_switch) as SwitchCompat
+
         drawer_switch.setOnCheckedChangeListener { compoundButton, b ->
-            if (b) {
+
+            if (compoundButton.isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
             }
+
 
         }
         val exitButton : MenuItem = drawerNav.menu.findItem(R.id.exit)

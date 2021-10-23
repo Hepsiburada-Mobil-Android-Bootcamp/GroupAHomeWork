@@ -33,7 +33,7 @@ class HomeFoodsAdapter(
     ) :
     RecyclerView.Adapter<HomeFoodsAdapter.ViewHolder>() {
 
-
+    var itemClickListener: (food: FoodsModel) -> Unit = {}
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val foodImage: ImageView = itemView.findViewById(R.id.foodImage)
         val foodTitle: TextView = itemView.findViewById(R.id.foodTitle)
@@ -62,17 +62,16 @@ class HomeFoodsAdapter(
         val key = foodList[position].id
         holder.foodImage.load(foodList[position].image)
         holder.favIcon.setOnClickListener {
-
+            itemClickListener(foodList[position])
             homeFragment.playLikeAnim()
+            holder.cardView.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(key)
+                it.findNavController().navigate(action)
+
+            }
+
 
         }
-        holder.cardView.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(key)
-            it.findNavController().navigate(action)
-
-        }
-
-
     }
 
 

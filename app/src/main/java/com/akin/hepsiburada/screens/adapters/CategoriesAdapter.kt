@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.data.CategoriesModel
 import com.akin.hepsiburada.interfaces.ICategoriesOnClick
+import com.akin.hepsiburada.util.load
 import com.bumptech.glide.Glide
 
 class CategoriesAdapter(private val categoriesList: List<CategoriesModel>) :
@@ -21,7 +22,6 @@ class CategoriesAdapter(private val categoriesList: List<CategoriesModel>) :
         val image: ImageView = itemView.findViewById(R.id.categories_item_image)
         val linearLayout: LinearLayout = itemView.findViewById(R.id.linearLayout)
         val context = itemView.context
-
 
     }
 
@@ -37,7 +37,7 @@ class CategoriesAdapter(private val categoriesList: List<CategoriesModel>) :
 
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
         holder.nameText.text = categoriesList[position].name
-        Glide.with(holder.context).load(categoriesList[position].image).into(holder.image)
+        holder.image.load(categoriesList[position].image)
 
 
         if (position == selectedItem) {
@@ -53,13 +53,13 @@ class CategoriesAdapter(private val categoriesList: List<CategoriesModel>) :
         }
         holder.linearLayout.setOnClickListener {
 
-                itemClickListener(categoriesList[position].name)
-                //println(categoriesList[position].name)
-                selectedItem = holder.adapterPosition
-                listener?.let {
-                    listener?.onClick(position)
-                }
-                notifyDataSetChanged()
+            itemClickListener(categoriesList[position].name)
+            //println(categoriesList[position].name)
+            selectedItem = holder.adapterPosition
+            listener?.let {
+                listener?.onClick(position)
+            }
+            notifyDataSetChanged()
 
 
         }

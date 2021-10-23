@@ -52,7 +52,7 @@ class HomeViewModel : ViewModel() {
         val db = Firebase.firestore
 
 
-        db.collection("Foods").whereEqualTo("categories",alpha).get()
+        db.collection("Foods").whereEqualTo("category",alpha).get()
             .addOnSuccessListener { result ->
 
                 _foodList.value = result.toObjects(FoodsModel::class.java)

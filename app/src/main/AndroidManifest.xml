@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hepsiburada">
         <activity
-            android:name=".screens.activity.MainActivity"
+            android:name=".screens.activity.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".screens.activity.SplashActivity"
+            android:name=".screens.activity.MainActivity"
             android:exported="true">
 
         </activity>

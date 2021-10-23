@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.databinding.FragmentHomeBinding
 import com.akin.hepsiburada.databinding.FragmentSplashBinding
@@ -49,8 +50,10 @@ class SplashFragment : Fragment() {
 
 
                     if (firstStart){
+
                         val action = SplashFragmentDirections.actionSplashFragmentToViewPagerFragment()
-                        view?.findNavController()?.navigate(action)
+                        findNavController().navigate(action)
+
                     }else{
                         startActivity(Intent(requireContext(),MainActivity::class.java))
                     }

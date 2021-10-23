@@ -40,6 +40,7 @@ class ThirdScreenFragment : Fragment() {
                 val editor = prefs2.edit()
                 editor.putBoolean("firstStartAnasayfa", false)
                 editor.apply()
+
                 startActivity(Intent(requireContext(),MainActivity::class.java))
 
             }

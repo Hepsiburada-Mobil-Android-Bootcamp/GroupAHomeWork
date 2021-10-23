@@ -10,6 +10,8 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.util.*
+import kotlin.collections.ArrayList
 
 class FavoritsViewModel(private val userId: String) : ViewModel() {
     private val _favList = MutableLiveData<List<String>>()
@@ -18,24 +20,29 @@ class FavoritsViewModel(private val userId: String) : ViewModel() {
     val currentFavList: LiveData<MutableList<FoodsModel>> = _currentFavList
     private val isComplete = MutableLiveData<Boolean>()
     private lateinit var auth: FirebaseAuth
+    private var x: String? = null
+    private val list = mutableListOf<String>()
 
     init {
         getAllFav()
     }
 
     private fun getAllFav() {
-        val list = mutableListOf<FoodsModel>()
+
         val db = Firebase.firestore
         auth = Firebase.auth
 
 
         db.collection("Users").document(userId).collection("Favorits").get()
             .addOnSuccessListener { result ->
-                for (document in result) {
-                    _favList.value = document.get("foodId") as ArrayList<String>
 
+                for (i in result) {
+                    i.toObject(FoodsModel::class.java).let {
+                        list.add(it.id)
+                    }
 
                 }
+
 
             }
             .addOnFailureListener { exception ->
@@ -43,50 +50,37 @@ class FavoritsViewModel(private val userId: String) : ViewModel() {
 
             }.addOnCompleteListener {
 
-
-                for (document in favList.value!!) {
-
-                    db.collection("Foods").document(document).get()
-                        .addOnSuccessListener { result ->
-
-                            result.toObject(FoodsModel::class.java)?.let { it1 ->
-                                list.add(it1)
-
-                            }
-
-                        }
-                        .addOnFailureListener { exception ->
-                            println(exception)
-
-                        }.addOnCompleteListener {
-                            ///Courotines kullanilacak eger mumkunse
-
-                            if (document == favList.value!![favList.value!!.lastIndex]) {
-                                isComplete.value = true
-                            }
-
-
-                        }
-                }
-                println(list)
-
-                isComplete.observeForever {
-
-                    _currentFavList.value = list
-
-
-                }
-
+                _favList.value = list
             }
 
+
     }
 
-    fun addFoodsToFav() {
-        println("asaaaaa")
+    fun addFoodsToFav(food: FoodsModel) {
+
         val db = Firebase.firestore
-        db.collection("Users").document("3JZBBgTFlWD6U6SDBj8A").collection("Favorits").document().update("foodId", FieldValue.arrayUnion("1111111111"))
+        db.collection("Foods").whereEqualTo("id", food.id).get().addOnSuccessListener { result ->
+            for (document in result) {
 
+                document.toObject(FoodsModel::class.java).let { it1 ->
+                    db.collection("Users").document("3JZBBgTFlWD6U6SDBj8A").collection("Favorits")
+                        .document().set(document)
+
+                }
+            }
+
+
+        }.addOnCompleteListener {
+            println("basarili")
+
+        }.addOnFailureListener {
+            println(it)
+        }
 
 
     }
+
+
+
 }
+
