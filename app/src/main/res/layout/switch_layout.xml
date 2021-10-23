@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.SwitchCompat
-        android:background="@color/buttonColor"
+        android:background="@null"
         android:id="@+id/drawer_switch"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"

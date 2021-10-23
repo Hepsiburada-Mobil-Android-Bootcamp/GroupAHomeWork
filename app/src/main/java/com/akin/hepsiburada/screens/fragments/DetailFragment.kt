@@ -2,7 +2,6 @@ package com.akin.hepsiburada.screens.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.drawable.Icon
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,11 +14,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.databinding.FragmentDetailBinding
 import com.akin.hepsiburada.databinding.FragmentHomeBinding
+import com.akin.hepsiburada.domain.DetailViewModel
 import com.akin.hepsiburada.domain.*
 import com.akin.hepsiburada.screens.activity.MainActivity
 import com.akin.hepsiburada.screens.activity.SplashActivity
@@ -27,20 +28,17 @@ import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.DecimalFormat
 
-
 class DetailFragment : Fragment() {
 
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
     private  val args:DetailFragmentArgs by navArgs()
+    private val viewModel : DetailViewModel by viewModels {
+        DetailViewModelFactory(args.foodTitle)
+    }
     private var number = 1
     private val viewModelBottomSheet: BottomSheetViewModel by viewModels{
         BottomSheetFragmentFactory(requireContext())
-    }
-
-
-    private val viewModel : DetailViewModel by viewModels {
-        DetailViewModelFactory(args.foodTitle)
     }
 
 
@@ -48,6 +46,7 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val image = view?.findViewById<ImageButton>(R.id.favIcon)
         val x = activity as MainActivity
         x.findViewById<ImageView>(R.id.drawerMenuIcon).visibility = View.GONE
         x.findViewById<ImageView>(R.id.profilPic).visibility = View.GONE
@@ -72,20 +71,18 @@ class DetailFragment : Fragment() {
             viewModelBottomSheet.deleteFood(args.foodTitle)
             it.findNavController().popBackStack()
         }
-
-
-
          viewModel.detailFoodList.observe(viewLifecycleOwner,{
-
-             binding.apply {
-
+           binding.apply {
               textViewFood.text = it[0].name
               textViewFoodPrice.text = it[0].price.toString()
-               val defaultFoodPrice = textViewFoodPrice.text.toString().toDouble()
-                 var x: Double
-                 textViewFoodCalorie.text = it[0].calory + " " + "Calories"
-                 textViewIngList.text = it[0].ingredients.toString().replace("[","").replace("]","")
+              textViewFoodCalorie.text = it[0].calory + " " + "Calories"
               textViewCategory.text = it[0].category
+               val defaultFoodPrice = textViewFoodPrice.text.toString().toDouble()
+               var x: Double
+               textViewIngList.text = it[0].ingredients.toString().replace("[","").replace("]","")
+               backArrowButton.setOnClickListener {
+                   findNavController().popBackStack()
+               }
                numberText.text = number.toString()
 
 
@@ -111,14 +108,6 @@ class DetailFragment : Fragment() {
                    }
 
                }
-
-
-
-
-               backArrowButton.setOnClickListener {
-                   findNavController().popBackStack()
-               }
-
                plusButton.setOnClickListener {
 
                    if(number > 0) {
@@ -131,13 +120,13 @@ class DetailFragment : Fragment() {
                minusButton.setOnClickListener {
                    textViewFoodPrice.text.toString().toDouble()
                    if(number != 1) {
-                   number--
-                        x = (number * defaultFoodPrice)
-                   textViewFoodPrice.text = deciFormat.format(x).toString()
-                   numberText.text = number.toString()
+                       number--
+                       x = (number * defaultFoodPrice)
+                       textViewFoodPrice.text = deciFormat.format(x).toString()
+                       numberText.text = number.toString()
                    }
                }
-              Glide.with(requireContext()).load(it[0].image).circleCrop().into(imageViewFood)
+               Glide.with(requireContext()).load(it[0].image).circleCrop().into(imageViewFood)
            }
 
      })

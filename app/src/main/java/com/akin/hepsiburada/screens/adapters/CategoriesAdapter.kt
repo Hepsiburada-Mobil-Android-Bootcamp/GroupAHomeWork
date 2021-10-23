@@ -6,12 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.data.CategoriesModel
-import com.akin.hepsiburada.data.FoodsModel
-import com.akin.hepsiburada.screens.components.ICategoriesOnClick
+import com.akin.hepsiburada.interfaces.ICategoriesOnClick
 import com.bumptech.glide.Glide
 
 class CategoriesAdapter(private val categoriesList: List<CategoriesModel>) :

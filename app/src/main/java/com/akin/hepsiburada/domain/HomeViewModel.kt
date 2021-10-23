@@ -11,8 +11,11 @@ import com.google.firebase.ktx.Firebase
 class HomeViewModel : ViewModel() {
     private val _foodList = MutableLiveData<List<FoodsModel>>()
     val foodList: LiveData<List<FoodsModel>> = _foodList
+
     private val _categoriesList = MutableLiveData<List<CategoriesModel>>()
     val categoriesList: LiveData<List<CategoriesModel>> = _categoriesList
+
+    val isComplete = MutableLiveData (false)
 
     init {
 
@@ -37,6 +40,8 @@ class HomeViewModel : ViewModel() {
             .addOnFailureListener { exception ->
                 println(exception)
 
+            }.addOnCompleteListener {
+                isComplete.value = true
             }
 
 
@@ -47,9 +52,8 @@ class HomeViewModel : ViewModel() {
         val db = Firebase.firestore
 
 
-        db.collection("Foods").whereEqualTo("category",alpha).get()
+        db.collection("Foods").whereEqualTo("categories",alpha).get()
             .addOnSuccessListener { result ->
-
 
                 _foodList.value = result.toObjects(FoodsModel::class.java)
 

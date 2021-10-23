@@ -89,6 +89,7 @@
             app:layout_constraintTop_toTopOf="@+id/addPriceText" />
 
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="number"
             android:id="@+id/priceEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -173,12 +174,13 @@
             android:layout_width="20sp"
             android:layout_height="20sp"
 
-            android:src="@drawable/recipe"
+            android:src="@drawable/ic_balance_svgrepo_com"
             app:layout_constraintBottom_toBottomOf="@+id/addCalorieText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/addCalorieText" />
 
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="number"
             android:id="@+id/caloriesEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
