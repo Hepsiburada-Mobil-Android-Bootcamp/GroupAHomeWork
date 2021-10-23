@@ -9,10 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.databinding.FragmentFirstScreenBinding
 import com.akin.hepsiburada.databinding.FragmentSecondScreenBinding
-import kotlinx.android.synthetic.main.fragment_first_screen.*
-import kotlinx.android.synthetic.main.fragment_first_screen.view.*
-import kotlinx.android.synthetic.main.fragment_second_screen.view.*
-import kotlinx.android.synthetic.main.fragment_view_pager.*
+
 
 class SecondScreenFragment : Fragment() {
 
@@ -22,13 +19,14 @@ class SecondScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 
         _binding = FragmentSecondScreenBinding.inflate(inflater, container, false)
-
+        val viewPager  = activity?.findViewById<ViewPager2>(R.id.viewPager)
         binding.apply {
-            next.next.setOnClickListener {
+
+            next2.setOnClickListener {
                 viewPager?.currentItem = 2
             }
         }

@@ -1,12 +1,10 @@
 package com.akin.hepsiburada.screens.fragments
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -15,12 +13,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.databinding.FragmentDetailBinding
-import com.akin.hepsiburada.databinding.FragmentHomeBinding
 import com.akin.hepsiburada.domain.DetailViewModel
-import com.akin.hepsiburada.domain.DetailViewModelFactory
-import com.akin.hepsiburada.domain.HomeViewModel
+import com.akin.hepsiburada.domain.factory.DetailViewModelFactory
 import com.akin.hepsiburada.screens.activity.MainActivity
-import com.akin.hepsiburada.screens.activity.SplashActivity
 import com.bumptech.glide.Glide
 
 class DetailFragment : Fragment() {

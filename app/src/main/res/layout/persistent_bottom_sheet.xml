@@ -89,6 +89,7 @@
             app:layout_constraintTop_toTopOf="@+id/addPriceText" />
 
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="number"
             android:id="@+id/priceEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -179,6 +180,7 @@
             app:layout_constraintTop_toTopOf="@+id/addCalorieText" />
 
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="number"
             android:id="@+id/caloriesEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

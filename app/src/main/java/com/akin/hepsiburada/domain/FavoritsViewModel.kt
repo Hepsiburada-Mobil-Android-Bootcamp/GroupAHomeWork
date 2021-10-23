@@ -6,15 +6,17 @@ import androidx.lifecycle.ViewModel
 import com.akin.hepsiburada.data.FoodsModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class FavoritsViewModel : ViewModel() {
+class FavoritsViewModel(private val userId: String) : ViewModel() {
     private val _favList = MutableLiveData<List<String>>()
     val favList: LiveData<List<String>> = _favList
     private val _currentFavList = MutableLiveData<MutableList<FoodsModel>>()
     val currentFavList: LiveData<MutableList<FoodsModel>> = _currentFavList
-    private  val isComplete = MutableLiveData<Boolean>()
+    private val isComplete = MutableLiveData<Boolean>()
     private lateinit var auth: FirebaseAuth
 
     init {
@@ -27,7 +29,7 @@ class FavoritsViewModel : ViewModel() {
         auth = Firebase.auth
 
 
-        db.collection("Users").document("3JZBBgTFlWD6U6SDBj8A").collection("Favorits").get()
+        db.collection("Users").document(userId).collection("Favorits").get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     _favList.value = document.get("foodId") as ArrayList<String>
@@ -56,10 +58,10 @@ class FavoritsViewModel : ViewModel() {
                         .addOnFailureListener { exception ->
                             println(exception)
 
-                        }.addOnCompleteListener{
+                        }.addOnCompleteListener {
                             ///Courotines kullanilacak eger mumkunse
 
-                            if (document== favList.value!![favList.value!!.lastIndex]){
+                            if (document == favList.value!![favList.value!!.lastIndex]) {
                                 isComplete.value = true
                             }
 
@@ -76,6 +78,15 @@ class FavoritsViewModel : ViewModel() {
                 }
 
             }
+
+    }
+
+    fun addFoodsToFav() {
+        println("asaaaaa")
+        val db = Firebase.firestore
+        db.collection("Users").document("3JZBBgTFlWD6U6SDBj8A").collection("Favorits").document().update("foodId", FieldValue.arrayUnion("1111111111"))
+
+
 
     }
 }
