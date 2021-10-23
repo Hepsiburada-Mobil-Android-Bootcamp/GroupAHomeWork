@@ -174,7 +174,7 @@
             android:layout_width="20sp"
             android:layout_height="20sp"
 
-            android:src="@drawable/recipe"
+            android:src="@drawable/ic_balance_svgrepo_com"
             app:layout_constraintBottom_toBottomOf="@+id/addCalorieText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/addCalorieText" />
