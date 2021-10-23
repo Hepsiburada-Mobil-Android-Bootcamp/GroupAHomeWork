@@ -56,7 +56,11 @@ class HomeFoodsAdapter(
 
     override fun onBindViewHolder(holder: HomeFoodsAdapter.ViewHolder, position: Int) {
 
+        position.apply {
 
+                holder.foodTitle.text =foodList[this].name
+
+        }
         holder.foodTitle.text = foodList[position].name
         holder.foodPrice.text = foodList[position].price.toString()
         val key = foodList[position].id
@@ -64,12 +68,12 @@ class HomeFoodsAdapter(
         holder.favIcon.setOnClickListener {
             itemClickListener(foodList[position])
             homeFragment.playLikeAnim()
-            holder.cardView.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(key)
-                it.findNavController().navigate(action)
 
-            }
 
+        }
+        holder.cardView.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(key)
+            it.findNavController().navigate(action)
 
         }
     }

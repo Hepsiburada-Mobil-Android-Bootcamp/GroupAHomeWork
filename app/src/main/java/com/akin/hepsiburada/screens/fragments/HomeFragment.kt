@@ -68,13 +68,15 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //hide or show necessary view(it will change after add base fragment)
         val x = activity as MainActivity
         x.findViewById<ImageView>(R.id.drawerMenuIcon).visibility = View.VISIBLE
         x.findViewById<ImageView>(R.id.profilPic).visibility = View.VISIBLE
         x.findViewById<ImageView>(R.id.fab).visibility = View.VISIBLE
 
 
-
+        //searchView logic to transition
         searchView?.setOnClickListener {
             val extras = FragmentNavigatorExtras(binding.searchViewHome to "transitionSearch")
             findNavController().navigate(
@@ -84,6 +86,8 @@ class HomeFragment : Fragment() {
                 extras
             )
         }
+
+        //getAll Foods to adapter
 
         viewModel.foodList.observeForever {
             val adapter = HomeFoodsAdapter(it, this)
@@ -95,10 +99,7 @@ class HomeFragment : Fragment() {
 
         }
 
-        favViewModel.favList.observe(viewLifecycleOwner,{
-            println(it)
-        })
-
+       //progressbar logic
         viewModel.isComplete.observe(viewLifecycleOwner,{
             if (it){
 
@@ -107,6 +108,7 @@ class HomeFragment : Fragment() {
             }
         })
 
+        //getCategories to adapter
         viewModel.categoriesList.observe(viewLifecycleOwner, { categories ->
             val adapter = CategoriesAdapter(categories)
             rcCategory?.adapter = adapter
@@ -124,19 +126,19 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+    //lottie anim logic
     fun playLikeAnim() {
         lottieAnimationView?.playAnimation()
         lottieAnimationView?.visibility = VISIBLE
 
         lottieAnimationView?.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {
-                println("basladi")
+                println("like anim started")
             }
 
             override fun onAnimationEnd(animation: Animator) {
 
-                //Navigate to onboarding fragment
-                println("bitti")
+                println("like anim finished")
                 lottieAnimationView?.visibility = GONE
             }
 

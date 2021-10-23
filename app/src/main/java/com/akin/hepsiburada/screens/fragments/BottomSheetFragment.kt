@@ -199,6 +199,7 @@ class BottomSheetFragment() : BottomSheetDialogFragment() {
             imageUri = data.data!!
             selectedImage =
                 MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri)
+          //  addImage?.load(selectedImage) check Glide func.---
             Glide.with(requireContext()).load(selectedImage).circleCrop().into(addImage!!)
 
 
