@@ -67,6 +67,24 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
         }
 
     }
+    fun deleteFood(
+        id: String,
+    ) {
+
+        val db = Firebase.firestore
+
+        db.collection("Foods").whereEqualTo("id", id).get().addOnSuccessListener { result ->
+            for (document in result) {
+                x = document.id
+            }
+
+        }.addOnCompleteListener {
+            db.collection("Foods").document(x.toString()).delete()
+        }
+
+    }
+
+
 
     fun addAndGetImageFromFirebase(
         uri: Uri,
@@ -76,7 +94,7 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
         ingredients: ArrayList<String>,
         calory: String,
         id: String,
-        ) {
+    ) {
         val db = Firebase.firestore
         val uuid = UUID.randomUUID()
         val imageName: String = "$uuid.jpg"
@@ -84,7 +102,7 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
         storageRef.putFile(uri).continueWithTask {
 
 
-          storageRef.downloadUrl
+            storageRef.downloadUrl
 
         }.addOnFailureListener {
             isClickable.value = true
@@ -108,9 +126,7 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
 
         }
     }
-
-
-    private fun alert() {
+    private  fun alert(){
         val alert: CFAlertDialog.Builder = CFAlertDialog.Builder(context)
             .setDialogStyle(CFAlertDialog.CFAlertStyle.BOTTOM_SHEET).setTitle("Alert")
             .setMessage("New Food Successfully Add").addButton("Okay!", -1, -1,
