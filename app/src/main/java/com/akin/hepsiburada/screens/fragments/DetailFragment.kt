@@ -22,6 +22,8 @@ import com.akin.hepsiburada.databinding.FragmentDetailBinding
 import com.akin.hepsiburada.databinding.FragmentHomeBinding
 import com.akin.hepsiburada.domain.DetailViewModel
 import com.akin.hepsiburada.domain.*
+import com.akin.hepsiburada.domain.factory.BottomSheetFragmentFactory
+import com.akin.hepsiburada.domain.factory.DetailViewModelFactory
 import com.akin.hepsiburada.screens.activity.MainActivity
 import com.akin.hepsiburada.screens.activity.SplashActivity
 import com.bumptech.glide.Glide

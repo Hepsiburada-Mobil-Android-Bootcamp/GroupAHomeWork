@@ -6,21 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.GridLayout
-import android.widget.ListAdapter
 import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.akin.hepsiburada.R
-import com.akin.hepsiburada.data.FoodsModel
-import com.akin.hepsiburada.databinding.FragmentHomeBinding
 import com.akin.hepsiburada.databinding.FragmentSearchBinding
 import com.akin.hepsiburada.domain.HomeViewModel
 import com.akin.hepsiburada.domain.SearchViewModel
-import com.akin.hepsiburada.screens.adapters.HomeFoodsAdapter
 import com.akin.hepsiburada.screens.adapters.SearchFoodsAdapter
 
 
@@ -40,7 +32,7 @@ class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
-    private var rcSearch: RecyclerView? = null
+    private var _rcSearch: RecyclerView? = null
     private var searchView: SearchView? = null
     private val viewModel: HomeViewModel by viewModels()
     private val searchViewModel: SearchViewModel by viewModels()
@@ -51,9 +43,11 @@ class SearchFragment : Fragment() {
     ): View {
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        rcSearch = binding.rcSearch
-        rcSearch?.layoutManager = GridLayoutManager(context,2)
-        searchView = binding.searchViewSearch
+        binding.apply {
+            _rcSearch = rcSearch
+            _rcSearch?.layoutManager = GridLayoutManager(context,2)
+            searchView = searchViewSearch
+        }
 
         return binding.root
     }
@@ -63,7 +57,8 @@ class SearchFragment : Fragment() {
 
         searchViewModel.searchFoodList.observe(viewLifecycleOwner, {
             val adapter = SearchFoodsAdapter(it)
-            rcSearch?.adapter = adapter
+
+            _rcSearch?.adapter = adapter
 
             searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
                 override fun onQueryTextChange(p0: String?): Boolean {
