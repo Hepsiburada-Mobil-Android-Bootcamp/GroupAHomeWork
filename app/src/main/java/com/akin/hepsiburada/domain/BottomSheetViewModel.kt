@@ -64,6 +64,7 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
                 "name", name, "price", price, "image", image,
                 "category", category, "ingredients", ingredients, "calory", calory, "id", id
             )
+            alert()
         }
 
     }
@@ -144,7 +145,35 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
                 })
         alert.show()
     }
+      fun alertDelete(foodId : String){
+        val alert: CFAlertDialog.Builder = CFAlertDialog.Builder(context)
+            .setDialogStyle(CFAlertDialog.CFAlertStyle.BOTTOM_SHEET).setTitle("Alert")
+            .setMessage("Are you sure you want to delete the selected food?")
+            .addButton("YES", -1, -1,
+                CFAlertDialog.CFAlertActionStyle.POSITIVE, CFAlertDialog.CFAlertActionAlignment.END,
+                object : DialogInterface.OnCancelListener, DialogInterface.OnClickListener {
+                    override fun onCancel(p0: DialogInterface?) {
+                        TODO("Not yet implemented")
+                    }
 
+                    override fun onClick(p0: DialogInterface?, p1: Int) {
+                        deleteFood(foodId)
+                        p0?.dismiss()
+                    }
+                })
+            .addButton("NO!", -1, -1,
+                CFAlertDialog.CFAlertActionStyle.NEGATIVE, CFAlertDialog.CFAlertActionAlignment.END,
+                object : DialogInterface.OnCancelListener, DialogInterface.OnClickListener {
+                    override fun onCancel(p0: DialogInterface?) {
+                        TODO("Not yet implemented")
+                    }
+
+                    override fun onClick(p0: DialogInterface?, p1: Int) {
+                        p0?.dismiss()
+                    }
+                })
+        alert.show()
+    }
 }
 
 
