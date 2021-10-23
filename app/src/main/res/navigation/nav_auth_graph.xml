@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_auth_graph"
+    app:startDestination="@id/authFragment">
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.akin.hepsiburada.screens.fragments.AuthFragment"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_authFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
+        <action
+            android:id="@+id/action_authFragment_to_chooseFragment"
+            app:destination="@id/chooseFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="com.akin.hepsiburada.screens.fragments.LoginFragment"
+        android:label="fragment_login_tab"
+        tools:layout="@layout/fragment_login_tab" >
+        <action
+            android:id="@+id/action_loginFragment2_to_signUpFragment2"
+            app:destination="@id/signUpFragment2" />
+        <action
+            android:id="@+id/action_loginFragment2_to_authFragment"
+            app:destination="@id/authFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment2"
+        android:name="com.akin.hepsiburada.screens.fragments.SignUpFragment"
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/action_signUpFragment2_to_authFragment"
+            app:destination="@id/authFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseFragment"
+        android:name="com.akin.hepsiburada.screens.fragments.ChooseFragment"
+        android:label="fragment_photo_upload"
+        tools:layout="@layout/fragment_photo_upload" >
+        <action
+            android:id="@+id/action_chooseFragment_to_photoUploadFragment2"
+            app:destination="@id/photoUploadFragment2"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerDoneFragment"
+        android:name="com.akin.hepsiburada.screens.fragments.RegisterDoneFragment"
+        android:label="fragment_register_done"
+        tools:layout="@layout/fragment_register_done" />
+    <fragment
+        android:id="@+id/photoUploadFragment2"
+        android:name="com.akin.hepsiburada.screens.fragments.PhotoUploadFragment"
+        android:label="PhotoUploadFragment" >
+        <action
+            android:id="@+id/action_photoUploadFragment2_to_registerDoneFragment"
+            app:destination="@id/registerDoneFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+    </fragment>
+</navigation>
