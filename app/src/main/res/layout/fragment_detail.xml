@@ -14,10 +14,11 @@
         tools:context=".screens.fragments.DetailFragment">
 
         <ImageView
-            android:id="@+id/favIcon"
+            android:id="@+id/removeIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="28dp"
+            android:src="@drawable/ic_baseline_remove_circle_24"
             android:background="?android:attr/selectableItemBackground"
             android:minWidth="48dp"
             android:minHeight="48dp"
@@ -47,8 +48,7 @@
             android:layout_width="202dp"
             android:layout_height="209dp"
             android:layout_marginTop="64dp"
-            android:src="@drawable/pizza"
-            app:layout_constraintEnd_toEndOf="@+id/favIcon"
+            app:layout_constraintEnd_toEndOf="@+id/removeIcon"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="@+id/backArrowButton"
             app:layout_constraintTop_toTopOf="parent" />
@@ -65,6 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageViewFood">
 
             <Button
+                android:id="@+id/minusButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
@@ -72,14 +73,15 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/numberText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
                 android:textColor="@color/textColor"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/plusButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
@@ -96,6 +98,7 @@
             android:textColor="@color/textColor"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/poppinsmedium"
             app:layout_constraintStart_toStartOf="@+id/textViewFood"
             app:layout_constraintTop_toBottomOf="@+id/textViewFoodCalorie"
             android:text="Ingredients" />
@@ -107,8 +110,10 @@
             android:layout_marginTop="32dp"
             android:includeFontPadding="false"
             android:textColor="@color/textColor"
+            android:fontFamily="@font/poppinsmedium"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:textStyle="bold
+"
             app:layout_constraintStart_toStartOf="@+id/backArrowButton"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:text="Pizza Chicken" />
@@ -120,10 +125,26 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:includeFontPadding="false"
+            android:fontFamily="@font/poppinsmedium"
             android:textColor="@color/textColor"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/textViewFood"
             app:layout_constraintTop_toBottomOf="@+id/textViewFood"
+            tools:text="Pizza Chicken" />
+
+        <TextView
+            android:id="@+id/textViewIngList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="28dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFoodPrice"
+            app:layout_constraintStart_toStartOf="@+id/textViewIngredients"
+            app:layout_constraintTop_toBottomOf="@+id/textViewIngredients"
             tools:text="Pizza Chicken" />
 
         <TextView
@@ -132,6 +153,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             tools:text="65 Calories"
+            android:fontFamily="@font/poppinsmedium"
             android:textColor="@color/textColor"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -144,6 +166,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="20-30 min"
+            android:fontFamily="@font/poppinsmedium"
             android:textColor="@color/textColor"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -156,10 +179,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="6.99"
+            android:fontFamily="@font/poppinsmedium"
             android:textColor="@color/textColor"
-            android:textSize="34sp"
+            android:textSize="32sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/favIcon"
+            app:layout_constraintEnd_toEndOf="@+id/removeIcon"
             app:layout_constraintTop_toTopOf="@+id/textViewFood" />
 
         <ImageView
@@ -190,6 +214,17 @@
             app:layout_constraintStart_toEndOf="@+id/textViewFoodCalorie"
             app:layout_constraintTop_toTopOf="@+id/textViewFoodCalorie" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/detailFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/buttonColor"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

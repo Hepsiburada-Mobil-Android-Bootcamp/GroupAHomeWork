@@ -32,8 +32,6 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
         }
     }
 
-
-
     fun updateFood(
         name: String,
         price: Double,
@@ -42,15 +40,13 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
         ingredients: ArrayList<String>,
         calory: String,
         id: String,
-        foodId: String
     ) {
 
         val db = Firebase.firestore
 
-        db.collection("Foods").whereEqualTo("id", foodId).get().addOnSuccessListener { result ->
+        db.collection("Foods").whereEqualTo("id", id).get().addOnSuccessListener { result ->
             for (document in result) {
                 x = document.id
-                println(x)
             }
 
         }.addOnCompleteListener {
@@ -60,7 +56,28 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
             )
         }
 
-    }private  fun alert(){
+    }
+
+    fun deleteFood(
+        id: String,
+    ) {
+
+        val db = Firebase.firestore
+
+        db.collection("Foods").whereEqualTo("id", id).get().addOnSuccessListener { result ->
+            for (document in result) {
+                x = document.id
+            }
+
+        }.addOnCompleteListener {
+            db.collection("Foods").document(x.toString()).delete()
+        }
+
+    }
+
+
+
+    private  fun alert(){
         val alert: CFAlertDialog.Builder = CFAlertDialog.Builder(context)
             .setDialogStyle(CFAlertDialog.CFAlertStyle.BOTTOM_SHEET).setTitle("Alert")
             .setMessage("Do you want to see details").addButton("Yummy!", -1, -1,

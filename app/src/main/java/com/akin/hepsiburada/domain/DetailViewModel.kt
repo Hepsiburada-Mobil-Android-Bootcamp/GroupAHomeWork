@@ -16,14 +16,14 @@ class DetailViewModel(val id : String) : ViewModel(){
 
     private fun getDetail() {
         val db = Firebase.firestore
-        db.collection("Foods").whereEqualTo("id",id).get()
-            .addOnSuccessListener { result ->
-                _foodList.value = result.toObjects(FoodsModel::class.java)
+        db.collection("Foods").whereEqualTo("id",id).addSnapshotListener {
+                value, _ ->
+            value?.forEach { it ->
+                it.toObject(FoodsModel::class.java).also {
+                    _foodList.value = listOf(it)
+                }
             }
-            .addOnFailureListener { exception ->
-                println(exception)
-
-            }
+        }
     }
 
 
