@@ -14,7 +14,10 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.*
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.databinding.ActivityMainBinding
@@ -40,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        println(Firebase.auth.currentUser?.uid)
         // fab button logic
         fabButton = binding.fab
         fabButton.setOnClickListener {
@@ -105,6 +108,7 @@ class MainActivity : AppCompatActivity() {
 
             Firebase.auth.signOut()
             startActivity(Intent(this, AuthenticationActivity::class.java))
+            finish()
             return@setOnMenuItemClickListener true
         }
 
@@ -116,6 +120,15 @@ class MainActivity : AppCompatActivity() {
             imageView.load(userImage)
 
         })
+        profilePic.setOnClickListener {
+            val extras = FragmentNavigatorExtras(profilePic to "profileImageTransition")
+            navController.navigate(
+                R.id.action_homeFragment_to_profileFragment,
+                null,
+                null,
+                extras
+            )
+        }
 
 
     }

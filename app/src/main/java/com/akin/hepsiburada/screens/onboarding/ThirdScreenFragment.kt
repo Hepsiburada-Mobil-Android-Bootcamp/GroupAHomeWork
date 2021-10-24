@@ -16,7 +16,10 @@ import androidx.navigation.fragment.findNavController
 import com.akin.hepsiburada.databinding.FragmentFirstScreenBinding
 import com.akin.hepsiburada.databinding.FragmentSecondScreenBinding
 import com.akin.hepsiburada.databinding.FragmentThirdScreenBinding
+import com.akin.hepsiburada.screens.activity.AuthenticationActivity
 import com.akin.hepsiburada.screens.activity.MainActivity
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class ThirdScreenFragment : Fragment() {
@@ -40,8 +43,12 @@ class ThirdScreenFragment : Fragment() {
                 val editor = prefs2.edit()
                 editor.putBoolean("firstStartAnasayfa", false)
                 editor.apply()
+                if (Firebase.auth.currentUser==null){
+                    startActivity(Intent(requireContext(),AuthenticationActivity::class.java))
+                }else{
+                    startActivity(Intent(requireContext(),MainActivity::class.java))
+                }
 
-                startActivity(Intent(requireContext(),MainActivity::class.java))
 
             }
         }
