@@ -49,11 +49,11 @@ class LoginFragment : Fragment() {
             when {
 
                 receivedemail.isEmpty() -> {
-                    emailText.error = "e-mail bos olamaz"
+                    emailText.error = "E-mail can not be empty!"
                 }
                 receivedpass.isEmpty() -> {
 
-                    passwordText.error = "e-mail bos olamaz"
+                    passwordText.error = "Password can not be empty!"
                 }
                 else -> {
                     println(" $receivedemail $receivedpass")

@@ -58,6 +58,9 @@ class ProfileFragment : Fragment() {
         viewModel.userList.observe(viewLifecycleOwner, {
             val userImage = it.imageUrl
             image?.load(userImage)
+            binding.profileNameText.text = it.name
+            binding.profileAddressText.text = it.address
+            binding.profileNumberText.text = it.number
 
         })
         return binding.root
