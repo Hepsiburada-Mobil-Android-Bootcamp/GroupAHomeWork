@@ -48,6 +48,15 @@
             app:destination="@id/photoUploadFragment2"
             app:enterAnim="@android:anim/slide_in_left"
             app:popEnterAnim="@android:anim/slide_in_left" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
+        <argument
+            android:name="number"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/registerDoneFragment"
@@ -63,5 +72,17 @@
             app:destination="@id/registerDoneFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:popEnterAnim="@android:anim/slide_in_left" />
+        <argument
+            android:name="selectedImage"
+            app:argType="android.net.Uri" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
+        <argument
+            android:name="number"
+            app:argType="string" />
     </fragment>
 </navigation>

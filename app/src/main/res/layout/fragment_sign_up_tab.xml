@@ -51,53 +51,41 @@
             app:layout_constraintTop_toBottomOf="@+id/signup_passwordEditText" />
 
         <EditText
-            android:id="@+id/singup_nameEditText"
+            android:id="@+id/singup_numberEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="Name"
+            android:hint="Number"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signup_userNameEditText" />
 
         <EditText
-            android:id="@+id/signup_cityEditText"
+            android:id="@+id/signup_adressEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="City"
+            android:hint="Adress"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/singup_nameEditText" />
-
-        <EditText
-            android:id="@+id/signup_streetEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="Street"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_cityEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/singup_numberEditText" />
 
         <Button
             android:id="@+id/signup_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:background="@drawable/detail_btn_bg"
             android:backgroundTint="@color/buttonColor"
             android:text="Sing Up"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_streetEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_adressEditText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

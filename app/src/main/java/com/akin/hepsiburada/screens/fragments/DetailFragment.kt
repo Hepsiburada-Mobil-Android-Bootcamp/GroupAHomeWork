@@ -70,8 +70,9 @@ class DetailFragment : Fragment() {
         deciFormat.maximumFractionDigits = 2
         super.onViewCreated(view, savedInstanceState)
         binding.removeIcon.setOnClickListener {
-            viewModelBottomSheet.deleteFood(args.foodTitle)
-            it.findNavController().popBackStack()
+            viewModelBottomSheet.alertDelete(args.foodTitle)
+            findNavController().popBackStack()
+
         }
          viewModel.detailFoodList.observe(viewLifecycleOwner,{
            binding.apply {
