@@ -19,6 +19,7 @@
  * ✔ Add Fav
  * ✔ Darkt-Light Theme
  * ✔ Validation for Register
+ * ✔ Onboarding Screen
 
 # To Do
 
