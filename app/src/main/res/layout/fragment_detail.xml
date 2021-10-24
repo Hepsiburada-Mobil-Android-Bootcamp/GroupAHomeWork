@@ -166,25 +166,25 @@
             android:id="@+id/textViewFoodPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="6.99"
             android:fontFamily="@font/poppinsmedium"
+            android:includeFontPadding="false"
             android:textColor="@color/textColor"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/removeIcon"
-            app:layout_constraintTop_toTopOf="@+id/textViewFood" />
+            app:layout_constraintTop_toTopOf="@+id/textViewFood"
+            tools:text="6.99" />
+
 
         <ImageView
             android:id="@+id/dollarIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:src="@drawable/ic_dollar_icon"
             app:layout_constraintBottom_toBottomOf="@+id/textViewFoodPrice"
             app:layout_constraintEnd_toStartOf="@+id/textViewFoodPrice"
             app:layout_constraintTop_toTopOf="@+id/textViewFoodPrice"
-            app:layout_constraintVertical_bias="0.73" />
-
+            app:layout_constraintVertical_bias="0.761" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/detailFab"

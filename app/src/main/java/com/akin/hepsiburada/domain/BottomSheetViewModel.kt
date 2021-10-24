@@ -127,10 +127,45 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
 
         }
     }
+
+    fun updateAndGetImageFromFirebase (
+
+        uri: Uri,
+        name: String,
+        price: Double,
+        image: String,
+        category: String,
+        ingredients: ArrayList<String>,
+        calory: String,
+        id: String,
+    )  {
+        var downloadUrl : Uri? = null
+        val db = Firebase.firestore
+        val uuid = UUID.randomUUID()
+        val imageName: String = "$uuid.jpg"
+        val storageRef = FirebaseStorage.getInstance().getReference("images/$imageName")
+        storageRef.putFile(uri).continueWithTask {
+
+
+            storageRef.downloadUrl
+
+        }.addOnFailureListener {
+            isClickable.value = true
+            println(it.toString())
+        }.addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                downloadUrl = task.result
+                println(downloadUrl)
+                updateFood(name, price, downloadUrl.toString(), category, ingredients, calory, id)
+
+            }
+        }
+
+    }
     private  fun alert(){
         val alert: CFAlertDialog.Builder = CFAlertDialog.Builder(context)
             .setDialogStyle(CFAlertDialog.CFAlertStyle.BOTTOM_SHEET).setTitle("Alert")
-            .setMessage("New Food Successfully Add").addButton("Okay!", -1, -1,
+            .setMessage("Successfully").addButton("Okay!", -1, -1,
                 CFAlertDialog.CFAlertActionStyle.POSITIVE, CFAlertDialog.CFAlertActionAlignment.END,
                 object : DialogInterface.OnCancelListener, DialogInterface.OnClickListener {
                     override fun onCancel(p0: DialogInterface?) {

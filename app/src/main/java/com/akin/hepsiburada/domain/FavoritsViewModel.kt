@@ -27,7 +27,7 @@ class FavoritsViewModel(private val userId: String) : ViewModel() {
         getAllFav()
     }
 
-    private fun getAllFav() {
+     fun getAllFav() {
 
         val db = Firebase.firestore
         auth = Firebase.auth
@@ -79,6 +79,10 @@ class FavoritsViewModel(private val userId: String) : ViewModel() {
 
 
     }
+
+
+
+
 
 
 
