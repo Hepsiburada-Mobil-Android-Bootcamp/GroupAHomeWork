@@ -34,7 +34,7 @@
                 android:id="@+id/profileNameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                tools:text="Name"
                 android:textColor="@color/textColor"
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
@@ -46,7 +46,7 @@
                 android:id="@+id/profileNumberText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Number"
+                tools:text="Number"
                 android:textColor="@color/textColor"
                 android:textAlignment="center"
                 android:fontFamily="@font/poppinsregular">
@@ -57,7 +57,7 @@
                 android:id="@+id/profileAddressText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Address"
+                tools:text="Address"
                 android:textColor="@color/textColor"
                 android:textAlignment="center"
                 android:fontFamily="@font/poppinsregular">
