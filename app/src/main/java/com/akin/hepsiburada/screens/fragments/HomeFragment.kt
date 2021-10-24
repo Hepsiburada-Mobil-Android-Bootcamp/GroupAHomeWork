@@ -2,7 +2,6 @@ package com.akin.hepsiburada.screens.fragments
 
 import android.animation.Animator
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -11,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -24,6 +24,8 @@ import com.akin.hepsiburada.domain.factory.FavoritsViewModelFactory
 import com.akin.hepsiburada.screens.activity.MainActivity
 import com.akin.hepsiburada.screens.adapters.CategoriesAdapter
 import com.akin.hepsiburada.screens.adapters.HomeFoodsAdapter
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class HomeFragment : Fragment() {
@@ -37,8 +39,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
-    private val favViewModel: FavoritsViewModel by viewModels{
-        FavoritsViewModelFactory("3JZBBgTFlWD6U6SDBj8A")
+    private val favViewModel: FavoritsViewModel by viewModels {
+        FavoritsViewModelFactory("3JZBBgTFlWD6U6SDBj8A")//it will change userDoc ID!!!
     }
     private var rcCategory: RecyclerView? = null
     private var rcHomeFoods: RecyclerView? = null
@@ -93,15 +95,15 @@ class HomeFragment : Fragment() {
             val adapter = HomeFoodsAdapter(it, this)
             rcHomeFoods?.adapter = adapter
 
-            adapter.itemClickListener={ data->
+            adapter.itemClickListener = { data ->
                 favViewModel.addFoodsToFav(data)
             }
 
         }
 
-       //progressbar logic
-        viewModel.isComplete.observe(viewLifecycleOwner,{
-            if (it){
+        //progressbar logic
+        viewModel.isComplete.observe(viewLifecycleOwner, {
+            if (it) {
 
                 progress_bar?.visibility = GONE
 

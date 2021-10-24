@@ -20,24 +20,6 @@ import kotlin.collections.ArrayList
 class BottomSheetViewModel(val context: Context) : ViewModel() {
     val isClickable = MutableLiveData<Boolean>(false)
     var x: String? = null
-    fun addNewFood(
-        name: String,
-        price: Double,
-        image: String,
-        category: String,
-        ingredients: ArrayList<String>,
-        calory: String,
-        id: String,
-
-        ) {
-        val newFood = FoodsModel(name, price, image, category, ingredients, calory, id)
-        val db = Firebase.firestore
-
-
-        db.collection("Foods").document().set(newFood).addOnCompleteListener {
-            alert()
-        }
-    }
 
 
     fun updateFood(
@@ -49,7 +31,7 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
         calory: String,
         id: String,
 
-    ) {
+        ) {
 
         val db = Firebase.firestore
 
@@ -67,6 +49,7 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
         }
 
     }
+
     fun deleteFood(
         id: String,
     ) {
@@ -83,7 +66,6 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
         }
 
     }
-
 
 
     fun addAndGetImageFromFirebase(
@@ -108,10 +90,18 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
             isClickable.value = true
             println(it.toString())
         }.addOnCompleteListener { task ->
-            if (task.isSuccessful){
+            if (task.isSuccessful) {
                 val downloadUrl = task.result
                 println(downloadUrl)
-                val newFood = FoodsModel(name, price, downloadUrl.toString(), category, ingredients, calory, id)
+                val newFood = FoodsModel(
+                    name,
+                    price,
+                    downloadUrl.toString(),
+                    category,
+                    ingredients,
+                    calory,
+                    id
+                )
                 db.collection("Foods").document().set(newFood).addOnCompleteListener {
                     alert()
                     isClickable.value = true
@@ -119,14 +109,10 @@ class BottomSheetViewModel(val context: Context) : ViewModel() {
             }
 
 
-
-
-
-
-
         }
     }
-    private  fun alert(){
+
+    private fun alert() {
         val alert: CFAlertDialog.Builder = CFAlertDialog.Builder(context)
             .setDialogStyle(CFAlertDialog.CFAlertStyle.BOTTOM_SHEET).setTitle("Alert")
             .setMessage("New Food Successfully Add").addButton("Okay!", -1, -1,

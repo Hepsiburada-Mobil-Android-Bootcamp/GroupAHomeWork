@@ -34,6 +34,7 @@ class HomeFoodsAdapter(
     RecyclerView.Adapter<HomeFoodsAdapter.ViewHolder>() {
 
     var itemClickListener: (food: FoodsModel) -> Unit = {}
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val foodImage: ImageView = itemView.findViewById(R.id.foodImage)
         val foodTitle: TextView = itemView.findViewById(R.id.foodTitle)
@@ -58,24 +59,25 @@ class HomeFoodsAdapter(
 
         position.apply {
 
-                holder.foodTitle.text =foodList[this].name
+            holder.foodTitle.text = foodList[this].name
+            holder.foodPrice.text = foodList[this].price.toString()
+            holder.foodTitle.text = foodList[this].name
+            holder.foodPrice.text = foodList[this].price.toString()
+            val key = foodList[this].id
+            holder.foodImage.load(foodList[this].image)
+            holder.favIcon.setOnClickListener {
+                itemClickListener(foodList[this])
+                homeFragment.playLikeAnim()
+
+            }
+            holder.cardView.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(key)
+                it.findNavController().navigate(action)
+
+            }
 
         }
-        holder.foodTitle.text = foodList[position].name
-        holder.foodPrice.text = foodList[position].price.toString()
-        val key = foodList[position].id
-        holder.foodImage.load(foodList[position].image)
-        holder.favIcon.setOnClickListener {
-            itemClickListener(foodList[position])
-            homeFragment.playLikeAnim()
 
-
-        }
-        holder.cardView.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(key)
-            it.findNavController().navigate(action)
-
-        }
     }
 
 
