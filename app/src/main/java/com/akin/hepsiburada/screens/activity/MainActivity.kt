@@ -1,26 +1,29 @@
 package com.akin.hepsiburada.screens.activity
 
-import android.media.Image
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
-import android.widget.Switch
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.GravityCompat
-import androidx.core.view.MenuItemCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.*
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.databinding.ActivityMainBinding
+import com.akin.hepsiburada.domain.MainActivityViewModel
 import com.akin.hepsiburada.screens.fragments.BottomSheetFragment
+import com.akin.hepsiburada.util.load
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -33,13 +36,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var container: ConstraintLayout
     private lateinit var fabButton: FloatingActionButton
     private lateinit var profilePic: ImageView
+    private val viewModel: MainActivityViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        println(Firebase.auth.currentUser?.uid)
         // fab button logic
         fabButton = binding.fab
         fabButton.setOnClickListener {
@@ -70,14 +74,13 @@ class MainActivity : AppCompatActivity() {
         container = binding.container
         profilePic = binding.profilPic
         val drawerNav = binding.navigationView
+
         drawerNav.itemIconTintList = null
         val drawerIcon = binding.drawerMenuIcon
         drawerIcon.setOnClickListener {
             drawer.openDrawer(GravityCompat.START)
         }
         NavigationUI.setupWithNavController(drawerNav, navController)
-
-
         // This is the menu item that contains your switch
         val menuItem: MenuItem = drawerNav.menu
             .findItem(R.id.changeTheme)
@@ -99,11 +102,32 @@ class MainActivity : AppCompatActivity() {
 
 
         }
-        val exitButton : MenuItem = drawerNav.menu.findItem(R.id.exit)
+        val exitButton: MenuItem = drawerNav.menu.findItem(R.id.exit)
         exitButton.setOnMenuItemClickListener {
             println("asdsa")
-            //Parseuser logout
+
+            Firebase.auth.signOut()
+            startActivity(Intent(this, AuthenticationActivity::class.java))
+            finish()
             return@setOnMenuItemClickListener true
+        }
+
+        viewModel.userList.observe(this, {
+            val userImage = it.imageUrl
+            profilePic.load(userImage)
+            val view: View = drawerNav.getHeaderView(0)
+            val imageView: ImageView = view.findViewById(R.id.profilImage)
+            imageView.load(userImage)
+
+        })
+        profilePic.setOnClickListener {
+            val extras = FragmentNavigatorExtras(profilePic to "profileImageTransition")
+            navController.navigate(
+                R.id.action_homeFragment_to_profileFragment,
+                null,
+                null,
+                extras
+            )
         }
 
 

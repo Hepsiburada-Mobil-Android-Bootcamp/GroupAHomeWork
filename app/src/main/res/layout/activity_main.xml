@@ -37,9 +37,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:context=".screens.activity.MainActivity">
-
-
 
 
                 <com.google.android.material.bottomappbar.BottomAppBar
@@ -95,10 +97,9 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="28dp"
                     android:background="@null"
-                    android:src="@drawable/pizza"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
+                    android:transitionName="profileImageTransition"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/pizza" />
 
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
