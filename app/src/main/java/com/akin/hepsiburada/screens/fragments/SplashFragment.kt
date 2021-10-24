@@ -1,6 +1,7 @@
 package com.akin.hepsiburada.screens.fragments
 
 import android.animation.Animator
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -13,8 +14,11 @@ import androidx.navigation.fragment.findNavController
 import com.akin.hepsiburada.R
 import com.akin.hepsiburada.databinding.FragmentHomeBinding
 import com.akin.hepsiburada.databinding.FragmentSplashBinding
+import com.akin.hepsiburada.screens.activity.AuthenticationActivity
 import com.akin.hepsiburada.screens.activity.MainActivity
 import com.akin.hepsiburada.screens.onboarding.ViewPagerFragment
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class SplashFragment : Fragment() {
@@ -55,7 +59,16 @@ class SplashFragment : Fragment() {
                         findNavController().navigate(action)
 
                     }else{
-                        startActivity(Intent(requireContext(),MainActivity::class.java))
+                        if(Firebase.auth.currentUser==null){
+                            startActivity(Intent(requireContext(),AuthenticationActivity::class.java))
+                            activity?.finish()
+                        }
+                        else{
+                            startActivity(Intent(requireContext(),MainActivity::class.java))
+                            activity?.finish()
+                        }
+
+
                     }
 
 
