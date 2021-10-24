@@ -36,7 +36,7 @@ class FavoriFragment : Fragment() {
         x.findViewById<ImageView>(R.id.profilPic).visibility = View.GONE
         _binding = FragmentFavoriBinding.inflate(inflater, container, false)
         rcFavori = binding.recyclerViewFav
-        viewModel.getAllFav()
+
 
         // Inflate the layout for this fragment
         return binding.root
