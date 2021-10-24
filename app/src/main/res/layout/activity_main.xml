@@ -95,7 +95,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="28dp"
                     android:background="@null"
-                    android:src="@drawable/pizza"
+                    tools:src="@drawable/pizza"
                     app:layout_constraintTop_toTopOf="parent" />
 
 

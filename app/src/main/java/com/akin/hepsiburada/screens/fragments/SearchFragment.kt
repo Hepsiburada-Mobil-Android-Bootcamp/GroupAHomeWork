@@ -16,7 +16,6 @@ import com.akin.hepsiburada.domain.SearchViewModel
 import com.akin.hepsiburada.screens.adapters.SearchFoodsAdapter
 
 
-
 class SearchFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
@@ -45,7 +44,7 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         binding.apply {
             _rcSearch = rcSearch
-            _rcSearch?.layoutManager = GridLayoutManager(context,2)
+            _rcSearch?.layoutManager = GridLayoutManager(context, 2)
             searchView = searchViewSearch
         }
 
@@ -60,7 +59,7 @@ class SearchFragment : Fragment() {
 
             _rcSearch?.adapter = adapter
 
-            searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextChange(p0: String?): Boolean {
                     searchViewModel.getSpesificFoods(p0.toString())
                     return false
@@ -76,13 +75,7 @@ class SearchFragment : Fragment() {
         })
 
 
-
-
     }
-
-
-
-
 
 
 }
